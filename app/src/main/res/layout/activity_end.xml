@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingBottom="@dimen/activity_vertical_margin"
+    android:paddingLeft="@dimen/activity_horizontal_margin"
+    android:paddingRight="@dimen/activity_horizontal_margin"
+    android:paddingTop="@dimen/activity_vertical_margin"
+    tools:context=".End">
+
+    <TextView
+        android:id="@+id/textGameOver"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:text="Game over"
+        android:textSize="40sp" />
+
+    <ImageView
+        android:id="@+id/imageRematch"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/textGameOver"
+        android:layout_alignStart="@+id/textGameOver"
+        android:layout_alignTop="@+id/textRematch"
+        android:layout_marginLeft="44dp"
+        android:layout_marginStart="44dp"
+        android:onClick="rematchHandler"
+        android:src="@drawable/rematch" />
+
+    <TextView
+        android:id="@+id/textRematch"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_toEndOf="@+id/imageRematch"
+        android:layout_toRightOf="@+id/imageRematch"
+        android:text="Rematch"
+        android:textSize="@dimen/menuItem" />
+
+    <ImageView
+        android:id="@+id/imageQuit_EndMenu"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/imageRematch"
+        android:layout_marginTop="15sp"
+        android:layout_toLeftOf="@+id/textRematch"
+        android:layout_toStartOf="@+id/textRematch"
+        android:onClick="quitHandler"
+        android:src="@drawable/quit" />
+
+    <TextView
+        android:id="@+id/textQuit_EndMenu"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/imageQuit_EndMenu"
+        android:layout_alignLeft="@+id/textRematch"
+        android:layout_alignStart="@+id/textRematch"
+        android:text="Quit"
+        android:textSize="@dimen/menuItem" />
+
+    <TextView
+        android:id="@+id/textWinner"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textGameOver"
+        android:layout_centerHorizontal="true"
+        android:text=""
+        android:textSize="18dp" />
+
+</RelativeLayout>

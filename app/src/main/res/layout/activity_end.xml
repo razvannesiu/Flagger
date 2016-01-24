@@ -3,10 +3,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
+    android:paddingBottom="@dimen/padding"
+    android:paddingLeft="@dimen/padding"
+    android:paddingRight="@dimen/padding"
+    android:paddingTop="@dimen/padding"
     tools:context=".End">
 
     <TextView
@@ -15,8 +15,8 @@
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:text="Game over"
-        android:textSize="40sp" />
+        android:text="@string/textGameOver"
+        android:textSize="@dimen/welcomeOrByeMessage" />
 
     <ImageView
         android:id="@+id/imageRematch"
@@ -27,6 +27,7 @@
         android:layout_alignTop="@+id/textRematch"
         android:layout_marginLeft="44dp"
         android:layout_marginStart="44dp"
+        tools:ignore="ContentDescription"
         android:onClick="rematchHandler"
         android:src="@drawable/rematch" />
 
@@ -37,7 +38,7 @@
         android:layout_centerVertical="true"
         android:layout_toEndOf="@+id/imageRematch"
         android:layout_toRightOf="@+id/imageRematch"
-        android:text="Rematch"
+        android:text="@string/textRematch"
         android:textSize="@dimen/menuItem" />
 
     <ImageView
@@ -45,10 +46,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/imageRematch"
-        android:layout_marginTop="15sp"
+        android:layout_marginTop="15dp"
         android:layout_toLeftOf="@+id/textRematch"
         android:layout_toStartOf="@+id/textRematch"
         android:onClick="quitHandler"
+        tools:ignore="ContentDescription"
         android:src="@drawable/quit" />
 
     <TextView
@@ -58,7 +60,7 @@
         android:layout_alignBottom="@+id/imageQuit_EndMenu"
         android:layout_alignLeft="@+id/textRematch"
         android:layout_alignStart="@+id/textRematch"
-        android:text="Quit"
+        android:text="@string/textQuit"
         android:textSize="@dimen/menuItem" />
 
     <TextView
@@ -67,7 +69,6 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/textGameOver"
         android:layout_centerHorizontal="true"
-        android:text=""
-        android:textSize="18dp" />
+        android:textSize="@dimen/winnerDisplay" />
 
 </RelativeLayout>

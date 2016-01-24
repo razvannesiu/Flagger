@@ -3,10 +3,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
+    android:paddingBottom="@dimen/padding"
+    android:paddingLeft="@dimen/padding"
+    android:paddingRight="@dimen/padding"
+    android:paddingTop="@dimen/padding"
     tools:context="com.example.radurazvannesiu.flagger.Start">
 
     <TextView
@@ -15,8 +15,8 @@
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:text="Welcome to Flagger!"
-        android:textSize="40sp" />
+        android:text="@string/textWelcome"
+        android:textSize="@dimen/welcomeOrByeMessage" />
 
     <ImageView
         android:id="@+id/imagePlay"
@@ -27,8 +27,9 @@
         android:layout_alignTop="@+id/textPlay"
         android:layout_marginLeft="132dp"
         android:layout_marginStart="132dp"
-        android:onClick="startHandler"
-        android:src="@drawable/play" />
+        android:onClick="playHandler"
+        android:src="@drawable/play"
+        tools:ignore="ContentDescription" />
 
     <TextView
         android:id="@+id/textPlay"
@@ -37,7 +38,7 @@
         android:layout_centerVertical="true"
         android:layout_toEndOf="@+id/imagePlay"
         android:layout_toRightOf="@+id/imagePlay"
-        android:text="Play"
+        android:text="@string/textPlay"
         android:textSize="@dimen/menuItem" />
 
     <ImageView
@@ -48,7 +49,8 @@
         android:layout_alignStart="@+id/imagePlay"
         android:layout_alignTop="@+id/textQuit_StartMenu"
         android:onClick="quitHandler"
-        android:src="@drawable/quit" />
+        android:src="@drawable/quit"
+        tools:ignore="ContentDescription" />
 
     <TextView
         android:id="@+id/textQuit_StartMenu"
@@ -57,10 +59,9 @@
         android:layout_alignEnd="@+id/textPlay"
         android:layout_alignRight="@+id/textPlay"
         android:layout_below="@+id/imagePlay"
-        android:layout_marginTop="15sp"
-        android:text="Quit"
+        android:layout_marginTop="15dp"
+        android:text="@string/textQuit"
         android:textSize="@dimen/menuItem" />
-
 
 
 </RelativeLayout>

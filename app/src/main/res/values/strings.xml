@@ -1,4 +1,9 @@
 <resources>
-    <string name="app_name">Flagger</string>
-
+    <string name="appName">Flagger</string>
+    <string name="textWelcome">Welcome to Flagger!</string>
+    <string name="textPlay">Play</string>
+    <string name="textQuit">Quit</string>
+    <string name="textRematch">Rematch</string>
+    <string name="textGameOver">Game over</string>
+    <string name="textTimeIsUp">Time is up!</string>
 </resources>

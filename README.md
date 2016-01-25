@@ -55,7 +55,7 @@ Flagger is a single-device multiplayer quiz game with numerous questions in whic
 ![Gameplay 1](/Screenshots/Gameplay.jpg)
 ![Gameplay 2](/Screenshots/Gameplay2.jpg)
 ![End Menu](/Screenshots/EndMenu.jpg)
-![Logo](/Screenshots/logoFlagger.png)
+![Logo](/Screenshots/logo.jpg)
 
 ###Attributions
 Flag images made by [antibakteriell] (http://antibakteriell.deviantart.com/) from DeviantArt. ([license] (http://creativecommons.org/licenses/by/3.0/))

@@ -1,7 +1,11 @@
 ## Flagger (*Android app*)
-![LOGO] (file:///E:/%23ProjectEuler/Android%20Projects/Flagger/app/src/main/res/mipmap-xxxhdpi/ic_launcher.png)
+
 ###Description
 Flagger is a single-device multiplayer quiz game with numerous questions in which users have to identify the flag of a specific country. 
+
+###Minimum requirements:
+- API level: 10 
+- Framework version : 2.3 (Gingerbread)
 
 ###Features implemented:
 - [x] Random occurence of questions & answer choices.
@@ -13,11 +17,12 @@ Flagger is a single-device multiplayer quiz game with numerous questions in whic
   - [ ] Using a SQL Database. (*__optimization__*)
 - [ ] Implement "Back to start menu" item in End Menu
 - Add questions & flags for all the countries from:
-  - [ ] 
-    - [ ] 
-      - [ ] 
-        - [ ] 
-          - [ ] 
+  - [x] Europe 
+  - [x] Asia
+  - [ ] North America
+  - [ ] South America
+  - [ ] Africa
+  - [ ] Australia & Oceania
 - Implement single player mode:
   - [ ] Display item in Start Menu.
   - [ ] Implement single player action (screen).
@@ -32,7 +37,7 @@ Flagger is a single-device multiplayer quiz game with numerous questions in whic
   - [ ] Implement functionality. (display flag, capital & trivia of the selected country)
 - Implement Settings tool:
   - [ ] Display item in Start Menu.
-  - Change difficulty feature:
+- Change difficulty feature:
     - [ ] Create drop-down list.
     - [ ] Implement functionality. (on click handlers)
     - [ ] Easy: 15 seconds per question; questions related to well-known countries.
@@ -42,7 +47,9 @@ Flagger is a single-device multiplayer quiz game with numerous questions in whic
     - [ ] Create drop-down list with numbers from 5 to 50 (possible number of questions per match).
     - [ ] Implement functionality. (action taken when user selects a number)
   - Choose continents feature:
-    - [ ] 
+    - [ ] Create list with checkable text views (with the names of the continents - except Antarctica) 
+    - [ ] Implement functionality. (questions regarding countries from the checked continent are enabled)
+
 ###Screenshots
 
 

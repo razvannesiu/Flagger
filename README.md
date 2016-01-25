@@ -51,7 +51,13 @@ Flagger is a single-device multiplayer quiz game with numerous questions in whic
     - [ ] Implement functionality. (questions regarding countries from the checked continent are enabled)
 
 ###Screenshots
-
+![Start Menu](/Screenshots/StartMenu.jpg)
+![Gameplay 1](/Screenshots/Gameplay1.jpg)
+![Gameplay 2](/Screenshots/Gameplay2.jpg)
+![End Menu](/Screenshots/EndMenu.jpg)
+![Logo](/Screenshots/logoFlagger.jpg)
 
 ###Attributions
-Images made by [antibakteriell] (http://antibakteriell.deviantart.com/) from DeviantArt. ([license] (http://creativecommons.org/licenses/by/3.0/))
+Flag images made by [antibakteriell] (http://antibakteriell.deviantart.com/) from DeviantArt. ([license] (http://creativecommons.org/licenses/by/3.0/))
+
+All the other icons are from [Material Design Icons] (https://materialdesignicons.com/). ([license] (https://creativecommons.org/licenses/by/4.0/))

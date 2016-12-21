@@ -10,22 +10,22 @@ import java.util.Collections;
  */
 public class RandomNumberGenerator {
 
-    //set of question IDs (one question ID occurs only once in the set)
-    private ArrayList<Integer> setOfQuestionIds = new ArrayList<Integer>();
-    //list of flag IDs (one flag ID can occur multiple times in the list)
-    private ArrayList<Integer> listOfFlagIds = new ArrayList<Integer>();
     /* Determines how many times a flag ID occurs in the list.
      (if this constant is set to 1, then once a flag ID is generated in a match,
      that flag ID won't occur anymore in that match,
      unless it's the ID of the correct-answer flag)*/
     public static final int REPEAT_FLAGS_X_TIMES = 5;
+    private static final RandomNumberGenerator INSTANCE = new RandomNumberGenerator();
+    private static int indexForQuestionIdsSet = 0;
+    private static int indexForFlagIdsList = 0;
     /* Define constants: # of question IDs in set & # of flag IDs in list.
       (for efficiency: we won't have to compute these values each time they're used in a loop) */
     final int NR_OF_QUESTION_IDS_IN_SET = QuestionDatabase.NR_OF_QUESTIONS;
     final int NR_OF_FLAG_IDS_IN_LIST = QuestionDatabase.NR_OF_FLAGS * REPEAT_FLAGS_X_TIMES;
-    private static final RandomNumberGenerator INSTANCE = new RandomNumberGenerator();
-    private static int indexForQuestionIdsSet = 0;
-    private static int indexForFlagIdsList = 0;
+    //set of question IDs (one question ID occurs only once in the set)
+    private ArrayList<Integer> setOfQuestionIds = new ArrayList<Integer>();
+    //list of flag IDs (one flag ID can occur multiple times in the list)
+    private ArrayList<Integer> listOfFlagIds = new ArrayList<Integer>();
 
     /**
      * Private default constructor for this singleton class.
@@ -58,12 +58,14 @@ public class RandomNumberGenerator {
      * Generates a random question ID.
      * (once generated in a match, a question ID cannot be generated again in the same match)
      * In case of rematch, use {@link #resetQuestionIdGenerator() } to reset this method.
+     * The question id generator gets restarted whenever a new game starts.
      */
     public int generateRandomQuestionId() {
         //get the questionId corresponding to the indexForQuestionIdsSet
         int questionId = setOfQuestionIds.get(indexForQuestionIdsSet);
         //increment index (so that this question ID won't be generated again in the same match)
         indexForQuestionIdsSet++;
+
         return questionId;
     }
 
@@ -81,7 +83,7 @@ public class RandomNumberGenerator {
     /**
      * Generates a random flag ID.
      * (once a flag ID is generated in a match, its chance to be generated again in the same match
-     * depends on the constant {@value #REPEAT_FLAGS_X_TIMES } )
+     * depends on the constant {@link #REPEAT_FLAGS_X_TIMES } )
      * To avoid an {@exception #ArrayIndexOutOfBoundsException } given by indexForFlagIdsList,
      * we use {@link #resetFlagIdGenerator()}, after indexForFlagIdsList becomes equal to the size
      * of the list of flag Ids.

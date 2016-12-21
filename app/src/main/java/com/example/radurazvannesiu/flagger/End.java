@@ -44,11 +44,6 @@ public class End extends AppCompatActivity {
      * @param view3 View for this handler.
      */
     public void rematchHandler(View view3) {
-        QuizActivity.setQuestionNumber(0);
-        QuizActivity.setPlayer1Score(0);
-        QuizActivity.setPlayer2Score(0);
-        RandomNumberGenerator generator = RandomNumberGenerator.getInstance();
-        generator.resetQuestionIdGenerator();
         Intent intent = new Intent(End.this, QuizActivity.class);
         startActivity(intent);
     }

@@ -5,5 +5,4 @@
     <string name="textQuit">Quit</string>
     <string name="textRematch">Rematch</string>
     <string name="textGameOver">Game over</string>
-    <string name="textTimeIsUp">Time is up!</string>
 </resources>

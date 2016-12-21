@@ -1,14 +1,18 @@
 package com.example.radurazvannesiu.flagger;
 
 import android.content.Intent;
+import android.content.res.Resources;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.view.animation.AlphaAnimation;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
 import java.util.ArrayList;
+import java.util.Locale;
 
 /**
  * Class that handles the display of the questions
@@ -17,63 +21,184 @@ import java.util.ArrayList;
  */
 public class QuizActivity extends AppCompatActivity {
 
-    private static int player1Score = 0;
-    private static int player2Score = 0;
     public static final int SECONDS_PER_QUESTION = 10;
     public static final int MILLIS_IN_A_SECOND = 1000;
     public static final QuestionDatabase QDB = QuestionDatabase.getInstance();
-    //array list that stores the options available for each question
-    private ArrayList<Integer> flags;
+    public static int QUESTIONS_PER_MATCH = 5;
+    private static int player1Score;
+    private static int player2Score;
     //the current number of the question displayed in a match (Q1, Q2, Q3, etc.)
-    private static int questionNumber = 0;
+    private static int questionNumber;
     //the ID of a question from the database (eg: Q1 has ID = 75 in the database)
     private static int questionId;
+    public final int TIMER_RED_THRESHOLD_IN_MILLIS = 3000;
+    //duration for button clicked animation
+    public final int BTN_ANIMATION_DURATION_IN_MILLIS = 600;
+    //initialize the TextView that displays the time left for a question to be answered
+    public TextView txt_timer;
+    //array list that stores the options available for each question
+    private ArrayList<Integer> flags;
+    //the TextViews
+    private TextView question;
+    private TextView scoreP1;
+    private TextView scoreP2;
+    //the ImageButtons
+    private ImageButton b1p1;
+    private ImageButton b2p1;
+    private ImageButton b3p1;
+    private ImageButton b4p1;
+    private ImageButton b1p2;
+    private ImageButton b2p2;
+    private ImageButton b3p2;
+    private ImageButton b4p2;
+    /* The following Strings represent the names of the flags displayed
+   (eg: flagNameForBtn1 = "france" is used to display France's flag
+   on button 1 from both player 1 & player 2)*/
+    private String flagNameForBtn1;
+    private String flagNameForBtn2;
+    private String flagNameForBtn3;
+    private String flagNameForBtn4;
+    // declaring the resources for the above mentioned buttons
+    private int resB1;
+    private int resB2;
+    private int resB3;
+    private int resB4;
+    private Resources res;
+    private String packageName;
+    //set the CountDownTimer (both parameters are in milliseconds)
+    private CountDownTimer timer;
+    private RandomNumberGenerator generator = RandomNumberGenerator.getInstance();
+    private AlphaAnimation alphaAnimation;
+    //check if players did answer the current question
+    private boolean didPlayer1Answer;
+    private boolean didPlayer2Answer;
+
+    //getter for the current number of the question displayed (questionNumber)
+    public static int getQuestionNumber() {
+        return questionNumber;
+    }
+
+    //setter for questionNumber
+    public static void setQuestionNumber(int newQuestionNumber) {
+        questionNumber = newQuestionNumber;
+    }
+
+    //getter for Player 1's score
+    public static int getPlayer1Score() {
+        return player1Score;
+    }
+
+    //setter for Player 1's score
+    public static void setPlayer1Score(int newScore) {
+        player1Score = newScore;
+    }
+
+    //getter for Player 2's score
+    public static int getPlayer2Score() {
+        return player2Score;
+    }
+
+    //setter for Player 2's score
+    public static void setPlayer2Score(int newScore) {
+        player2Score = newScore;
+    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_quiz);
-    }
 
-    @Override
-    protected void onResume() {
-        super.onResume();
+        //initialize animation (goes to 25% transparency)
+        alphaAnimation = new AlphaAnimation(1, 0.25f);
+        alphaAnimation.setDuration(BTN_ANIMATION_DURATION_IN_MILLIS);
+
+        //set question number & scores at beginning
+        questionNumber = 1;
+        player1Score = 0;
+        player2Score = 0;
+
+        //reset generator
+        generator.resetQuestionIdGenerator();
+
+        //set package name
+        packageName = getPackageName();
+
+        //initialize TextView that displays # of seconds left
+        txt_timer = (TextView) findViewById(R.id.timer);
 
         //the TextView objects for the currently displayed question & scores
-        TextView question = (TextView) findViewById(R.id.question);
-        TextView scoreP1 = (TextView) findViewById(R.id.player1Score);
-        TextView scoreP2 = (TextView) findViewById(R.id.player2Score);
+        question = (TextView) findViewById(R.id.question);
+        scoreP1 = (TextView) findViewById(R.id.player1Score);
+        scoreP2 = (TextView) findViewById(R.id.player2Score);
 
         /*The ImageButton objects for all the buttons that represent
         the options available for each question.
         Naming convention: b1p1 is button 1 for player 1.
         (buttons are displayed from left to right, from 1 to 8)*/
-        ImageButton b1p1 = (ImageButton) findViewById(R.id.imageButton1);
-        ImageButton b2p1 = (ImageButton) findViewById(R.id.imageButton2);
-        ImageButton b3p1 = (ImageButton) findViewById(R.id.imageButton3);
-        ImageButton b4p1 = (ImageButton) findViewById(R.id.imageButton4);
-        ImageButton b1p2 = (ImageButton) findViewById(R.id.imageButton5);
-        ImageButton b2p2 = (ImageButton) findViewById(R.id.imageButton6);
-        ImageButton b3p2 = (ImageButton) findViewById(R.id.imageButton7);
-        ImageButton b4p2 = (ImageButton) findViewById(R.id.imageButton8);
+        b1p1 = (ImageButton) findViewById(R.id.ib0);
+        b2p1 = (ImageButton) findViewById(R.id.ib1);
+        b3p1 = (ImageButton) findViewById(R.id.ib2);
+        b4p1 = (ImageButton) findViewById(R.id.ib3);
+        b1p2 = (ImageButton) findViewById(R.id.ib4);
+        b2p2 = (ImageButton) findViewById(R.id.ib6);
+        b3p2 = (ImageButton) findViewById(R.id.ib5);
+        b4p2 = (ImageButton) findViewById(R.id.ib7);
 
-        /* The following Strings represent the names of the flags displayed
-        (eg: flagNameForBtn1 = "france" is used to display France's flag
-        on button 1 from both player 1 & player 2)*/
-        String flagNameForBtn1;
-        String flagNameForBtn2;
-        String flagNameForBtn3;
-        String flagNameForBtn4;
-        // declaring the resources for the above mentioned buttons
-        int resB1;
-        int resB2;
-        int resB3;
-        int resB4;
+        //load resources
+        res = getResources();
 
+        //setup timer (we need 1 extra sec to cope with the initial delay)
+        timer = new CountDownTimer((SECONDS_PER_QUESTION + 1) * MILLIS_IN_A_SECOND,
+                MILLIS_IN_A_SECOND) {
+
+            public void onTick(long millisUntilFinished) {
+                /*If time is almost done, display the time in red.
+                (Need to add 1 extra sec for TIMER_RED_THRESHOLD_IN_MILLIS to cope with initial delay)
+                */
+                if (millisUntilFinished <= TIMER_RED_THRESHOLD_IN_MILLIS + 1000) {
+                    txt_timer.setTextColor(Color.RED);
+                }
+
+                //show the time
+                txt_timer.setText(String.valueOf(millisUntilFinished / MILLIS_IN_A_SECOND));
+            }
+
+            public void onFinish() {
+
+                //reset color to normal
+                txt_timer.setTextColor(Color.BLACK);
+
+                //increment question number
+                questionNumber += 1;
+
+                //if the current questionNumber reached the # of QUESTIONS_PER_MATCH, go to End Menu
+                if (QuizActivity.getQuestionNumber() > QUESTIONS_PER_MATCH) {
+                    Intent intent = new Intent(QuizActivity.this, End.class);
+                    startActivity(intent);
+                }
+                //otherwise, load the next one
+                else {
+                    loadQuestion();
+                }
+            }
+        };
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        loadQuestion();
+    }
+
+    private void loadQuestion() {
         //get a random question ID from the database and store it in questionId
         questionId = QDB.getRandomQuestionId();
         //get the array list of the flags that will be displayed for this question
         flags = QDB.getFlagIndexesArrayList(questionId);
+
+        //set answer check flag to false
+        didPlayer1Answer = false;
+        didPlayer2Answer = false;
 
         /* Since we have the IDs of the flags,
         we get from the database the names of the png files corresponding to those indexes.*/
@@ -83,10 +208,10 @@ public class QuizActivity extends AppCompatActivity {
         flagNameForBtn4 = QuestionDatabase.FLAGS[flags.get(3)];
 
         //set the values for the resources
-        resB1 = getResources().getIdentifier(flagNameForBtn1, "drawable", getPackageName());
-        resB2 = getResources().getIdentifier(flagNameForBtn2, "drawable", getPackageName());
-        resB3 = getResources().getIdentifier(flagNameForBtn3, "drawable", getPackageName());
-        resB4 = getResources().getIdentifier(flagNameForBtn4, "drawable", getPackageName());
+        resB1 = res.getIdentifier(flagNameForBtn1, "drawable", packageName);
+        resB2 = res.getIdentifier(flagNameForBtn2, "drawable", packageName);
+        resB3 = res.getIdentifier(flagNameForBtn3, "drawable", packageName);
+        resB4 = res.getIdentifier(flagNameForBtn4, "drawable", packageName);
 
         //draw the images of the flags on the buttons
         b1p1.setImageResource(resB1);
@@ -101,66 +226,52 @@ public class QuizActivity extends AppCompatActivity {
         b4p1.setImageResource(resB4);
         b4p2.setImageResource(resB4);
 
-        /* Increment the question number. (At the beginning of a match questionNumber is 0,
-        but it gets incremented by 1, and then the first question is displayed)*/
-        questionNumber++;
-
         //display the question
-        question.setText(questionNumber + ". " + QuestionDatabase.QUESTIONS[questionId]);
+        question.setText(String.format(Locale.getDefault(), "%d. %s", questionNumber, QuestionDatabase.QUESTIONS[questionId]));
 
         //display the score
-        scoreP1.setText(player1Score + "");
-        scoreP2.setText(player2Score + "");
+        scoreP1.setText(String.valueOf(player1Score));
+        scoreP2.setText(String.valueOf(player2Score));
 
-        //initialize the TextView that displays the time left for a question to be answered
-        final TextView TIMER = (TextView) findViewById(R.id.timer);
-        //set the CountDownTimer (both parameters are in milliseconds)
-        final CountDownTimer START = new CountDownTimer(SECONDS_PER_QUESTION * MILLIS_IN_A_SECOND,
-                MILLIS_IN_A_SECOND) {
+        timer.start();
+    }
 
-            public void onTick(long millisUntilFinished) {
-                //display the # of seconds left
-                TIMER.setText(millisUntilFinished / MILLIS_IN_A_SECOND + "");
+    public void player1ChoseAnswer(View v) {
+        int tag = Integer.parseInt(v.getTag().toString());
+
+        //animate button
+        v.startAnimation(alphaAnimation);
+
+        //check if player 1 didn't answer yet
+        if (!didPlayer1Answer) {
+            //check if answer is correct
+            if (flags.get(tag) == QuestionDatabase.QUESTION_ANSWER_MAP[questionId]) {
+                player1Score += 1;
             }
 
-            public void onFinish() {
-                TIMER.setText(R.string.textTimeIsUp);
-                //question finished, go to Switcher class
-                Intent intent = new Intent(QuizActivity.this, Switcher.class);
-                startActivity(intent);
+            //mark question as 'answered' for player 1
+            didPlayer1Answer = true;
+        }
+    }
+
+    public void player2ChoseAnswer(View v2) {
+        int tag = Integer.parseInt(v2.getTag().toString());
+
+        //animate button
+        v2.startAnimation(alphaAnimation);
+
+        //check if player 2 didn't answer yet
+        if (!didPlayer2Answer) {
+            //check if answer is correct
+            if (flags.get(tag) == QuestionDatabase.QUESTION_ANSWER_MAP[questionId]) {
+                player2Score += 1;
             }
-        }.start();
+
+            //mark question as 'answered' for player 2
+            didPlayer2Answer = true;
+        }
     }
 
-    //getter for the current number of the question displayed (questionNumber)
-    public static int getQuestionNumber() {
-        return questionNumber;
-    }
-
-    //setter for questionNumber
-    public static void setQuestionNumber(int newQuestionNumber) {
-        questionNumber = newQuestionNumber;
-    }
-
-    //setter for Player 1's score
-    public static void setPlayer1Score(int newScore) {
-        player1Score = newScore;
-    }
-
-    //getter for Player 1's score
-    public static int getPlayer1Score() {
-        return player1Score;
-    }
-
-    //setter for Player 2's score
-    public static void setPlayer2Score(int newScore) {
-        player2Score = newScore;
-    }
-
-    //getter for Player 2's score
-    public static int getPlayer2Score() {
-        return player2Score;
-    }
 
     //handler for button 1 from Player 1
     public void player1Button1OnClickHandler(View view) {

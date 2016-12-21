@@ -13,6 +13,9 @@
             android:name=".MultiPlayerQuiz"
             android:screenOrientation="landscape" />
         <activity
+            android:name=".SinglePlayerQuiz"
+            android:screenOrientation="landscape" />
+        <activity
             android:name=".End"
             android:screenOrientation="landscape" />
         <activity
@@ -24,7 +27,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".SinglePlayerQuiz"></activity>
     </application>
 
 </manifest>

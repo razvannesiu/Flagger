@@ -1,8 +1,8 @@
 <resources>
     <string name="appName">Flagger</string>
-    <string name="textWelcome">Welcome to Flagger!</string>
-    <string name="textPlay">Play</string>
-    <string name="textQuit">Quit</string>
+    <string name="textMulti">Offline Multiplayer</string>
+    <string name="textSingle">Single Player</string>
     <string name="textRematch">Rematch</string>
+    <string name="textGoBackToMenu">Back to Menu</string>
     <string name="textGameOver">Game over</string>
 </resources>

@@ -16,9 +16,6 @@
             android:name=".End"
             android:screenOrientation="landscape" />
         <activity
-            android:name=".Switcher"
-            android:screenOrientation="landscape" />
-        <activity
             android:name=".Start"
             android:screenOrientation="landscape">
             <intent-filter>

@@ -12,6 +12,9 @@ import android.view.View;
  */
 public class Start extends AppCompatActivity {
 
+    //determines if a game is multiplayer or not (changes behavior of QuizActivity)
+    public static boolean isMultiplayer;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -19,23 +22,21 @@ public class Start extends AppCompatActivity {
     }
 
     /**
-     * Method that handles the Quit button from the Start Menu.
+     * Method that handles the Offline Multiplayer & Single Player buttons from the Start Menu.
      *
-     * @param view1 View for this handler.
+     * @param view View for this handler.
      */
-    public void quitHandler(View view1) {
-        moveTaskToBack(true);
-        android.os.Process.killProcess(android.os.Process.myPid());
-        System.exit(1);
-    }
-
-    /**
-     * Method that handles the Play button from the Start Menu.
-     *
-     * @param view2 View for this handler.
-     */
-    public void playHandler(View view2) {
+    public void playBtnHandler(View view) {
         Intent intent = new Intent(Start.this, QuizActivity.class);
         startActivity(intent);
+
+        String tag = view.getTag().toString();
+
+        if(tag.equals("Single")){
+            isMultiplayer = false;
+        }
+        else if(tag.equals("Multi")){
+            isMultiplayer = true;
+        }
     }
 }

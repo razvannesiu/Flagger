@@ -27,9 +27,9 @@
         android:layout_alignTop="@+id/textRematch"
         android:layout_marginLeft="44dp"
         android:layout_marginStart="44dp"
-        tools:ignore="ContentDescription"
         android:onClick="rematchHandler"
-        android:src="@drawable/rematch" />
+        android:src="@drawable/rematch"
+        tools:ignore="ContentDescription" />
 
     <TextView
         android:id="@+id/textRematch"
@@ -49,18 +49,18 @@
         android:layout_marginTop="15dp"
         android:layout_toLeftOf="@+id/textRematch"
         android:layout_toStartOf="@+id/textRematch"
-        android:onClick="quitHandler"
-        tools:ignore="ContentDescription"
-        android:src="@drawable/quit" />
+        android:onClick="singleplayerBtnHandler"
+        android:src="@drawable/single"
+        tools:ignore="ContentDescription" />
 
     <TextView
-        android:id="@+id/textQuit_EndMenu"
+        android:id="@+id/txtBack_EndMenu"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignBottom="@+id/imageQuit_EndMenu"
         android:layout_alignLeft="@+id/textRematch"
         android:layout_alignStart="@+id/textRematch"
-        android:text="@string/textQuit"
+        android:text="@string/textGoBackToMenu"
         android:textSize="@dimen/menuItem" />
 
     <TextView

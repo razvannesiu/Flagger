@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -10,57 +11,69 @@
     tools:context="com.example.radurazvannesiu.flagger.Start">
 
     <TextView
-        android:id="@+id/textWelcome"
+        android:id="@+id/txtFlagger"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:text="@string/textWelcome"
+        android:text="@string/appName"
         android:textSize="@dimen/welcomeOrByeMessage" />
 
     <ImageView
-        android:id="@+id/imagePlay"
+        android:id="@+id/imgLogo"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/textWelcome"
-        android:layout_alignStart="@+id/textWelcome"
-        android:layout_alignTop="@+id/textPlay"
-        android:layout_marginLeft="132dp"
-        android:layout_marginStart="132dp"
-        android:onClick="playHandler"
-        android:src="@drawable/play"
-        tools:ignore="ContentDescription" />
-
-    <TextView
-        android:id="@+id/textPlay"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerVertical="true"
-        android:layout_toEndOf="@+id/imagePlay"
-        android:layout_toRightOf="@+id/imagePlay"
-        android:text="@string/textPlay"
-        android:textSize="@dimen/menuItem" />
+        android:layout_alignBottom="@+id/txtFlagger"
+        android:layout_toLeftOf="@+id/txtFlagger"
+        android:layout_toStartOf="@+id/txtFlagger"
+        android:adjustViewBounds="true"
+        android:cropToPadding="false"
+        android:scaleType="center"
+        app:srcCompat="@mipmap/ic_launcher" />
 
     <ImageView
         android:id="@+id/imageQuit_StartMenu"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/imagePlay"
-        android:layout_alignStart="@+id/imagePlay"
-        android:layout_alignTop="@+id/textQuit_StartMenu"
-        android:onClick="quitHandler"
-        android:src="@drawable/quit"
+        android:layout_alignLeft="@+id/imgLogo"
+        android:layout_alignStart="@+id/imgLogo"
+        android:layout_centerVertical="true"
+        android:onClick="playBtnHandler"
+        android:src="@drawable/single"
+        android:tag="Single"
+        tools:ignore="ContentDescription" />
+
+    <ImageView
+        android:id="@+id/imgMulti"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/textPlayMultiplayer_StartMenu"
+        android:layout_alignLeft="@+id/imageQuit_StartMenu"
+        android:layout_alignStart="@+id/imageQuit_StartMenu"
+        android:onClick="playBtnHandler"
+        android:src="@drawable/multi"
+        android:tag="Multi"
         tools:ignore="ContentDescription" />
 
     <TextView
-        android:id="@+id/textQuit_StartMenu"
+        android:id="@+id/textPlaySingleplayer_StartMenu"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignEnd="@+id/textPlay"
-        android:layout_alignRight="@+id/textPlay"
-        android:layout_below="@+id/imagePlay"
-        android:layout_marginTop="15dp"
-        android:text="@string/textQuit"
+        android:layout_alignBottom="@+id/imageQuit_StartMenu"
+        android:layout_toEndOf="@+id/imgLogo"
+        android:layout_toRightOf="@+id/imgLogo"
+        android:text="@string/textSingle"
+        android:textSize="@dimen/menuItem" />
+
+    <TextView
+        android:id="@+id/textPlayMultiplayer_StartMenu"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/textPlaySingleplayer_StartMenu"
+        android:layout_alignStart="@+id/textPlaySingleplayer_StartMenu"
+        android:layout_below="@+id/textPlaySingleplayer_StartMenu"
+        android:layout_marginTop="43dp"
+        android:text="@string/textMulti"
         android:textSize="@dimen/menuItem" />
 
 

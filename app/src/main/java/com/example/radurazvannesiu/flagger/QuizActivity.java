@@ -236,14 +236,19 @@ public class QuizActivity extends AppCompatActivity {
         timer.start();
     }
 
-    public void player1ChoseAnswer(View v) {
-        int tag = Integer.parseInt(v.getTag().toString());
-
-        //animate button
-        v.startAnimation(alphaAnimation);
+    /**
+     * Handles flag taps for player 1.
+     * @param flag Flag tapped.
+     */
+    public void player1ChoseAnswer(View flag) {
+        int tag = Integer.parseInt(flag.getTag().toString());
 
         //check if player 1 didn't answer yet
         if (!didPlayer1Answer) {
+
+            //animate button
+            flag.startAnimation(alphaAnimation);
+
             //check if answer is correct
             if (flags.get(tag) == QuestionDatabase.QUESTION_ANSWER_MAP[questionId]) {
                 player1Score += 1;
@@ -254,14 +259,19 @@ public class QuizActivity extends AppCompatActivity {
         }
     }
 
-    public void player2ChoseAnswer(View v2) {
-        int tag = Integer.parseInt(v2.getTag().toString());
-
-        //animate button
-        v2.startAnimation(alphaAnimation);
+    /**
+     * Handles flag taps for player 2.
+     * @param flag Flag tapped.
+     */
+    public void player2ChoseAnswer(View flag) {
+        int tag = Integer.parseInt(flag.getTag().toString());
 
         //check if player 2 didn't answer yet
         if (!didPlayer2Answer) {
+
+            //animate button
+            flag.startAnimation(alphaAnimation);
+
             //check if answer is correct
             if (flags.get(tag) == QuestionDatabase.QUESTION_ANSWER_MAP[questionId]) {
                 player2Score += 1;

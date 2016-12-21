@@ -66,6 +66,11 @@ public class RandomNumberGenerator {
         //increment index (so that this question ID won't be generated again in the same match)
         indexForQuestionIdsSet++;
 
+        //if we run out of question ID's to generate, we reset the generator
+        if(indexForQuestionIdsSet == NR_OF_QUESTION_IDS_IN_SET){
+            resetQuestionIdGenerator();
+        }
+
         return questionId;
     }
 
@@ -94,7 +99,7 @@ public class RandomNumberGenerator {
         //increment index
         // (so that this flag ID would have a smaller chance to occur again in the same match)
         indexForFlagIdsList++;
-        //if we run out of flag IDs to generate, we reset this method
+        //if we run out of flag IDs to generate, we reset the generator
         if (indexForFlagIdsList == NR_OF_FLAG_IDS_IN_LIST) {
             resetFlagIdGenerator();
         }

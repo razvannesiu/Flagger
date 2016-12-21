@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_centerHorizontal="true"
+    android:paddingBottom="@dimen/paddingMultiplayer"
+    android:paddingLeft="@dimen/paddingMultiplayer"
+    android:paddingRight="@dimen/paddingMultiplayer"
+    android:paddingTop="@dimen/paddingMultiplayer"
+    tools:context=".SinglePlayerQuiz">
+
+    <TextView
+        android:id="@+id/timer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:textSize="@dimen/timerDisplay"
+        tools:ignore="ContentDescription" />
+
+    <TextView
+        android:id="@+id/question"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/scoreBar"
+        android:layout_marginTop="33dp"
+        android:textSize="@dimen/textQuestion" />
+
+    <SeekBar
+        android:id="@+id/scoreBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:background="@android:color/transparent"
+        android:clickable="false"
+        android:thumb="@android:drawable/ic_menu_myplaces" />
+
+    <ImageButton
+        android:id="@+id/sib0"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/question"
+        android:layout_marginEnd="@dimen/flagMarginSingleplayer"
+        android:layout_marginLeft="@dimen/initialPadding"
+        android:layout_marginRight="@dimen/flagMarginSingleplayer"
+        android:layout_marginStart="@dimen/initialPadding"
+        android:layout_marginTop="@dimen/marginTopSingleplayer"
+        android:background="@android:color/transparent"
+        android:onClick="playerChoseAnswer"
+        android:tag="0" />
+
+    <ImageButton
+        android:id="@+id/sib1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/question"
+        android:layout_marginEnd="@dimen/flagMarginSingleplayer"
+        android:layout_marginRight="@dimen/flagMarginSingleplayer"
+        android:layout_marginTop="@dimen/marginTopSingleplayer"
+        android:layout_toEndOf="@+id/sib0"
+        android:layout_toRightOf="@+id/sib0"
+        android:background="@android:color/transparent"
+        android:onClick="playerChoseAnswer"
+        android:tag="1" />
+
+    <ImageButton
+        android:id="@+id/sib2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/question"
+        android:layout_marginEnd="@dimen/flagMarginSingleplayer"
+        android:layout_marginRight="@dimen/flagMarginSingleplayer"
+        android:layout_marginTop="@dimen/marginTopSingleplayer"
+        android:layout_toEndOf="@+id/sib1"
+        android:layout_toRightOf="@+id/sib1"
+        android:background="@android:color/transparent"
+        android:onClick="playerChoseAnswer"
+        android:tag="2" />
+
+    <ImageButton
+        android:id="@+id/sib3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/question"
+        android:layout_marginEnd="@dimen/flagMarginSingleplayer"
+        android:layout_marginRight="@dimen/flagMarginSingleplayer"
+        android:layout_marginTop="@dimen/marginTopSingleplayer"
+        android:layout_toEndOf="@+id/sib2"
+        android:layout_toRightOf="@+id/sib2"
+        android:background="@android:color/transparent"
+        android:onClick="playerChoseAnswer"
+        android:tag="3" />
+</RelativeLayout>

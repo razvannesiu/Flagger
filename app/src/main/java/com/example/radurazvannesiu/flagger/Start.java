@@ -12,8 +12,8 @@ import android.view.View;
  */
 public class Start extends AppCompatActivity {
 
-    //determines if a game is multiplayer or not (changes behavior of QuizActivity)
-    public static boolean isMultiplayer;
+    //determines if a game is multiPlayer or not (changes behavior of MultiPlayerQuiz)
+    public static boolean isMultiPlayer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,21 +22,24 @@ public class Start extends AppCompatActivity {
     }
 
     /**
-     * Method that handles the Offline Multiplayer & Single Player buttons from the Start Menu.
+     * Method that handles the Offline MultiPlayer & Single Player buttons from the Start Menu.
      *
      * @param view View for this handler.
      */
     public void playBtnHandler(View view) {
-        Intent intent = new Intent(Start.this, QuizActivity.class);
-        startActivity(intent);
+        Intent intent = null;
 
         String tag = view.getTag().toString();
 
         if(tag.equals("Single")){
-            isMultiplayer = false;
+            isMultiPlayer = false;
+            intent = new Intent(Start.this, SinglePlayerQuiz.class);
         }
         else if(tag.equals("Multi")){
-            isMultiplayer = true;
+            isMultiPlayer = true;
+            intent = new Intent(Start.this, MultiPlayerQuiz.class);
         }
+
+        startActivity(intent);
     }
 }

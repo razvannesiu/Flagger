@@ -1,7 +1,10 @@
 <resources>
     <!-- Default screen margins, per the Android Design guidelines. -->
-    <dimen name="padding">16dp</dimen>
-    <dimen name="flagMargin">8dp</dimen>
+    <dimen name="paddingMultiplayer">16dp</dimen>
+    <dimen name="marginTopSingleplayer">20dp</dimen>
+    <dimen name="initialPadding">100dp</dimen>
+    <dimen name="flagMarginMultiplayer">8dp</dimen>
+    <dimen name="flagMarginSingleplayer">25dp</dimen>
     <dimen name="menuItem">24dp</dimen>
     <dimen name="scoreDisplay">80dp</dimen>
     <dimen name="timerDisplay">24dp</dimen>
@@ -9,4 +12,8 @@
     <dimen name="welcomeOrByeMessage">40dp</dimen>
     <dimen name="winnerDisplay">18dp</dimen>
     <dimen name="textQuestion">20dp</dimen>
+
+    <!-- Default screen margins, per the Android Design guidelines. -->
+    <dimen name="activity_horizontal_margin">16dp</dimen>
+    <dimen name="activity_vertical_margin">16dp</dimen>
 </resources>

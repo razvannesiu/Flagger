@@ -10,7 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".QuizActivity"
+            android:name=".MultiPlayerQuiz"
             android:screenOrientation="landscape" />
         <activity
             android:name=".End"
@@ -20,9 +20,11 @@
             android:screenOrientation="landscape">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name=".SinglePlayerQuiz"></activity>
     </application>
 
 </manifest>

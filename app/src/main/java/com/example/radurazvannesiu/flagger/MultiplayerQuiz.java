@@ -19,11 +19,15 @@ import java.util.Locale;
  *
  * @author Razvan Nesiu.
  */
-public class QuizActivity extends AppCompatActivity {
+public class MultiPlayerQuiz extends AppCompatActivity {
 
-    public static final int SECONDS_PER_QUESTION = 10;
     public static final int MILLIS_IN_A_SECOND = 1000;
     public static final QuestionDatabase QDB = QuestionDatabase.getInstance();
+    public static final int TIMER_RED_THRESHOLD_IN_MILLIS = 3000;
+    //duration for button clicked animation
+    public static final int BTN_ANIMATION_DURATION_IN_MILLIS = 600;
+    //subject to change according to settings
+    public static int SECONDS_PER_QUESTION = 10;
     public static int QUESTIONS_PER_MATCH = 5;
     private static int player1Score;
     private static int player2Score;
@@ -31,9 +35,6 @@ public class QuizActivity extends AppCompatActivity {
     private static int questionNumber;
     //the ID of a question from the database (eg: Q1 has ID = 75 in the database)
     private static int questionId;
-    public final int TIMER_RED_THRESHOLD_IN_MILLIS = 3000;
-    //duration for button clicked animation
-    public final int BTN_ANIMATION_DURATION_IN_MILLIS = 600;
     //initialize the TextView that displays the time left for a question to be answered
     public TextView txt_timer;
     //array list that stores the options available for each question
@@ -106,7 +107,7 @@ public class QuizActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_quiz);
+        setContentView(R.layout.activity_multi_player_quiz);
 
         //initialize animation (goes to 25% transparency)
         alphaAnimation = new AlphaAnimation(1, 0.25f);
@@ -172,8 +173,8 @@ public class QuizActivity extends AppCompatActivity {
                 questionNumber += 1;
 
                 //if the current questionNumber reached the # of QUESTIONS_PER_MATCH, go to End Menu
-                if (QuizActivity.getQuestionNumber() > QUESTIONS_PER_MATCH) {
-                    Intent intent = new Intent(QuizActivity.this, End.class);
+                if (MultiPlayerQuiz.getQuestionNumber() > QUESTIONS_PER_MATCH) {
+                    Intent intent = new Intent(MultiPlayerQuiz.this, End.class);
                     startActivity(intent);
                 }
                 //otherwise, load the next one
@@ -279,72 +280,6 @@ public class QuizActivity extends AppCompatActivity {
 
             //mark question as 'answered' for player 2
             didPlayer2Answer = true;
-        }
-    }
-
-
-    //handler for button 1 from Player 1
-    public void player1Button1OnClickHandler(View view) {
-        //if flag ID matches the correct flag for the current question, increment score
-        if (flags.get(0) == QuestionDatabase.QUESTION_ANSWER_MAP[questionId]) {
-            player1Score++;
-        }
-
-    }
-
-    //handler for button 2 from Player 1
-    public void player1Button2OnClickHandler(View view) {
-        //if flag ID matches the correct flag for the current question, increment score
-        if (flags.get(1) == QuestionDatabase.QUESTION_ANSWER_MAP[questionId]) {
-            player1Score++;
-        }
-    }
-
-    //handler for button 3 from Player 1
-    public void player1Button3OnClickHandler(View view) {
-        //if flag ID matches the correct flag for the current question, increment score
-        if (flags.get(2) == QuestionDatabase.QUESTION_ANSWER_MAP[questionId]) {
-            player1Score++;
-        }
-    }
-
-    //handler for button 4 from Player 1
-    public void player1Button4OnClickHandler(View view) {
-        //if flag ID matches the correct flag for the current question, increment score
-        if (flags.get(3) == QuestionDatabase.QUESTION_ANSWER_MAP[questionId]) {
-            player1Score++;
-        }
-    }
-
-    //handler for button 1 from Player 2
-    public void player2Button1OnClickHandler(View view) {
-        //if flag ID matches the correct flag for the current question, increment score
-        if (flags.get(0) == QuestionDatabase.QUESTION_ANSWER_MAP[questionId]) {
-            player2Score++;
-        }
-    }
-
-    //handler for button 2 from Player 2
-    public void player2Button2OnClickHandler(View view) {
-        //if flag ID matches the correct flag for the current question, increment score
-        if (flags.get(1) == QuestionDatabase.QUESTION_ANSWER_MAP[questionId]) {
-            player2Score++;
-        }
-    }
-
-    //handler for button 3 from Player 2
-    public void player2Button3OnClickHandler(View view) {
-        //if flag ID matches the correct flag for the current question, increment score
-        if (flags.get(2) == QuestionDatabase.QUESTION_ANSWER_MAP[questionId]) {
-            player2Score++;
-        }
-    }
-
-    //handler for button 4 from Player 2
-    public void player2Button4OnClickHandler(View view) {
-        //if flag ID matches the correct flag for the current question, increment score
-        if (flags.get(3) == QuestionDatabase.QUESTION_ANSWER_MAP[questionId]) {
-            player2Score++;
         }
     }
 }

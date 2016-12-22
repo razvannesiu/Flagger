@@ -71,8 +71,8 @@ public class MultiPlayerQuiz extends AppCompatActivity {
     private RandomNumberGenerator generator = RandomNumberGenerator.getInstance();
     private AlphaAnimation alphaAnimation;
     //check if players did answer the current question
-    private boolean didPlayer1Answer;
-    private boolean didPlayer2Answer;
+    private boolean didPlayer1AnswerCorrectly;
+    private boolean didPlayer2AnswerCorrectly;
 
     //getter for the current number of the question displayed (questionNumber)
     public static int getQuestionNumber() {
@@ -123,6 +123,10 @@ public class MultiPlayerQuiz extends AppCompatActivity {
         player1Score = 0;
         player2Score = 0;
 
+        //set answers as wrong (initially)
+        didPlayer1AnswerCorrectly = false;
+        didPlayer2AnswerCorrectly = false;
+
         //reset generator
         generator.resetQuestionIdGenerator();
 
@@ -146,8 +150,8 @@ public class MultiPlayerQuiz extends AppCompatActivity {
         b3p1 = (ImageButton) findViewById(R.id.ib2);
         b4p1 = (ImageButton) findViewById(R.id.ib3);
         b1p2 = (ImageButton) findViewById(R.id.ib4);
-        b2p2 = (ImageButton) findViewById(R.id.ib6);
-        b3p2 = (ImageButton) findViewById(R.id.ib5);
+        b2p2 = (ImageButton) findViewById(R.id.ib5);
+        b3p2 = (ImageButton) findViewById(R.id.ib6);
         b4p2 = (ImageButton) findViewById(R.id.ib7);
 
         //load resources
@@ -202,10 +206,6 @@ public class MultiPlayerQuiz extends AppCompatActivity {
         //get the array list of the flags that will be displayed for this question
         flags = QDB.getFlagIndexesArrayList(questionId);
 
-        //set answer check flag to false
-        didPlayer1Answer = false;
-        didPlayer2Answer = false;
-
         /* Since we have the IDs of the flags,
         we get from the database the names of the png files corresponding to those indexes.*/
         flagNameForBtn1 = QuestionDatabase.FLAGS[flags.get(0)];
@@ -235,9 +235,23 @@ public class MultiPlayerQuiz extends AppCompatActivity {
         //display the question
         question.setText(String.format(Locale.getDefault(), "%d. %s", questionNumber, QuestionDatabase.QUESTIONS[questionId]));
 
+        /*increment scores if answers for the previous question are correct
+        (ineffective for 1st question)
+        */
+        if(didPlayer1AnswerCorrectly){
+            player1Score += 1;
+        }
+        if(didPlayer2AnswerCorrectly){
+            player2Score += 1;
+        }
+
         //display the score
         scoreP1.setText(String.valueOf(player1Score));
         scoreP2.setText(String.valueOf(player2Score));
+
+        //set answers as wrong (for this question)
+        didPlayer1AnswerCorrectly = false;
+        didPlayer2AnswerCorrectly = false;
 
         timer.start();
     }
@@ -249,19 +263,15 @@ public class MultiPlayerQuiz extends AppCompatActivity {
     public void player1ChoseAnswer(View flag) {
         int tag = Integer.parseInt(flag.getTag().toString());
 
-        //check if player 1 didn't answer yet
-        if (!didPlayer1Answer) {
+        //animate button
+        flag.startAnimation(alphaAnimation);
 
-            //animate button
-            flag.startAnimation(alphaAnimation);
-
-            //check if answer is correct
-            if (flags.get(tag) == QuestionDatabase.QUESTION_ANSWER_MAP[questionId]) {
-                player1Score += 1;
-            }
-
-            //mark question as 'answered' for player 1
-            didPlayer1Answer = true;
+        //set validity of answer
+        if (flags.get(tag) == QuestionDatabase.QUESTION_ANSWER_MAP[questionId]) {
+            didPlayer1AnswerCorrectly = true;
+        }
+        else{
+            didPlayer1AnswerCorrectly = false;
         }
     }
 
@@ -272,19 +282,15 @@ public class MultiPlayerQuiz extends AppCompatActivity {
     public void player2ChoseAnswer(View flag) {
         int tag = Integer.parseInt(flag.getTag().toString());
 
-        //check if player 2 didn't answer yet
-        if (!didPlayer2Answer) {
+        //animate button
+        flag.startAnimation(alphaAnimation);
 
-            //animate button
-            flag.startAnimation(alphaAnimation);
-
-            //check if answer is correct
-            if (flags.get(tag) == QuestionDatabase.QUESTION_ANSWER_MAP[questionId]) {
-                player2Score += 1;
-            }
-
-            //mark question as 'answered' for player 2
-            didPlayer2Answer = true;
+        //set validity of answer
+        if (flags.get(tag) == QuestionDatabase.QUESTION_ANSWER_MAP[questionId]) {
+            didPlayer2AnswerCorrectly = true;
+        }
+        else{
+            didPlayer2AnswerCorrectly = false;
         }
     }
 }

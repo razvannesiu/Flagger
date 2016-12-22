@@ -95,7 +95,7 @@ public class SinglePlayerQuiz extends AppCompatActivity {
         alphaAnimation = new AlphaAnimation(1, 0.25f);
         alphaAnimation.setDuration(MultiPlayerQuiz.BTN_ANIMATION_DURATION_IN_MILLIS);
 
-        //set question number & scores at beginning
+        //set question number & score at beginning
         questionNumber = 1;
         score = 0;
 
@@ -152,6 +152,12 @@ public class SinglePlayerQuiz extends AppCompatActivity {
 
             public void onFinish() {
 
+                //increment the score, if player answered correctly
+                if(didPlayerAnswerCorrectly) {
+                    score += 1;
+                }
+                scoreBar.setProgress(score);
+
                 //reset color to normal
                 txt_timer.setTextColor(Color.BLACK);
 
@@ -183,7 +189,7 @@ public class SinglePlayerQuiz extends AppCompatActivity {
         //get the array list of the flags that will be displayed for this question
         flags = QDB.getFlagIndexesArrayList(questionId);
 
-        //set answer check flag to false
+        //set answer as wrong (initially)
         didPlayerAnswerCorrectly = false;
 
         /* Since we have the IDs of the flags,
@@ -208,9 +214,6 @@ public class SinglePlayerQuiz extends AppCompatActivity {
         //display the question
         question.setText(String.format(Locale.getDefault(), "%d. %s", questionNumber, QuestionDatabase.QUESTIONS[questionId]));
 
-        //display the score
-        scoreBar.setProgress(score);
-
         timer.start();
     }
 
@@ -224,16 +227,12 @@ public class SinglePlayerQuiz extends AppCompatActivity {
         //animate button
         flag.startAnimation(alphaAnimation);
 
-        //check if the player didn't answer yet
-        if (!didPlayerAnswerCorrectly) {
-
-            //check if answer is correct
-            if (flags.get(tag) == QuestionDatabase.QUESTION_ANSWER_MAP[questionId]) {
-                score += 1;
-            }
-
-            //mark question as 'answered'
+        //set validity of answer
+        if (flags.get(tag) == QuestionDatabase.QUESTION_ANSWER_MAP[questionId]) {
             didPlayerAnswerCorrectly = true;
+        }
+        else{
+            didPlayerAnswerCorrectly = false;
         }
     }
 }

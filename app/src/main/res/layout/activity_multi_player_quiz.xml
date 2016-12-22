@@ -105,29 +105,29 @@
         android:layout_alignTop="@+id/ib3"
         android:layout_marginEnd="@dimen/flagMarginMultiplayer"
         android:layout_marginRight="@dimen/flagMarginMultiplayer"
-        android:layout_toLeftOf="@+id/ib6"
-        android:layout_toStartOf="@+id/ib6"
+        android:layout_toLeftOf="@+id/ib5"
+        android:layout_toStartOf="@+id/ib5"
         android:background="@android:color/transparent"
         android:onClick="player2ChoseAnswer"
         android:tag="0"
         tools:ignore="ContentDescription" />
 
     <ImageButton
-        android:id="@+id/ib6"
+        android:id="@+id/ib5"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignTop="@+id/ib4"
         android:layout_marginEnd="@dimen/flagMarginMultiplayer"
         android:layout_marginRight="@dimen/flagMarginMultiplayer"
-        android:layout_toLeftOf="@+id/ib5"
-        android:layout_toStartOf="@+id/ib5"
+        android:layout_toLeftOf="@+id/ib6"
+        android:layout_toStartOf="@+id/ib6"
         android:background="@android:color/transparent"
         android:onClick="player2ChoseAnswer"
-        android:tag="2"
+        android:tag="1"
         tools:ignore="ContentDescription" />
 
     <ImageButton
-        android:id="@+id/ib5"
+        android:id="@+id/ib6"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignTop="@+id/ib7"
@@ -137,7 +137,7 @@
         android:layout_toStartOf="@+id/ib7"
         android:background="@android:color/transparent"
         android:onClick="player2ChoseAnswer"
-        android:tag="1"
+        android:tag="2"
         tools:ignore="ContentDescription" />
 
     <ImageButton

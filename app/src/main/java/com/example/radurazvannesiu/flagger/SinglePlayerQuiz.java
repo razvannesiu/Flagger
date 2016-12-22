@@ -61,7 +61,7 @@ public class SinglePlayerQuiz extends AppCompatActivity {
     private RandomNumberGenerator generator = RandomNumberGenerator.getInstance();
     private AlphaAnimation alphaAnimation;
     //check if players did answer the current question
-    private boolean didPlayerAnswer;
+    private boolean didPlayerAnswerCorrectly;
 
     //getter for the current number of the question displayed (questionNumber)
     public static int getQuestionNumber() {
@@ -184,7 +184,7 @@ public class SinglePlayerQuiz extends AppCompatActivity {
         flags = QDB.getFlagIndexesArrayList(questionId);
 
         //set answer check flag to false
-        didPlayerAnswer = false;
+        didPlayerAnswerCorrectly = false;
 
         /* Since we have the IDs of the flags,
         we get from the database the names of the png files corresponding to those indexes.*/
@@ -221,11 +221,11 @@ public class SinglePlayerQuiz extends AppCompatActivity {
     public void playerChoseAnswer(View flag) {
         int tag = Integer.parseInt(flag.getTag().toString());
 
-        //check if the player didn't answer yet
-        if (!didPlayerAnswer) {
+        //animate button
+        flag.startAnimation(alphaAnimation);
 
-            //animate button
-            flag.startAnimation(alphaAnimation);
+        //check if the player didn't answer yet
+        if (!didPlayerAnswerCorrectly) {
 
             //check if answer is correct
             if (flags.get(tag) == QuestionDatabase.QUESTION_ANSWER_MAP[questionId]) {
@@ -233,7 +233,7 @@ public class SinglePlayerQuiz extends AppCompatActivity {
             }
 
             //mark question as 'answered'
-            didPlayerAnswer = true;
+            didPlayerAnswerCorrectly = true;
         }
     }
 }

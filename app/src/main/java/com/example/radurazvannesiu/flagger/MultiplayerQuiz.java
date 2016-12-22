@@ -104,6 +104,11 @@ public class MultiPlayerQuiz extends AppCompatActivity {
         player2Score = newScore;
     }
 
+    //getter for the flag indexes
+    public ArrayList<Integer> getFlags(){
+        return flags;
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

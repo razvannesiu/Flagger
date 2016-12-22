@@ -2,7 +2,7 @@
     <!-- Default screen margins, per the Android Design guidelines. -->
     <dimen name="paddingMultiplayer">16dp</dimen>
     <dimen name="marginTopSingleplayer">20dp</dimen>
-    <dimen name="initialPadding">100dp</dimen>
+    <dimen name="initialPadding">130dp</dimen>
     <dimen name="flagMarginMultiplayer">8dp</dimen>
     <dimen name="flagMarginSingleplayer">25dp</dimen>
     <dimen name="menuItem">24dp</dimen>

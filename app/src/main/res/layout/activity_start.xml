@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -31,13 +32,13 @@
         android:src="@mipmap/ic_launcher" />
 
     <ImageView
-        android:id="@+id/imageQuit_StartMenu"
+        android:id="@+id/imgSinglePlayer"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/imgLogo"
         android:layout_alignStart="@+id/imgLogo"
         android:layout_centerVertical="true"
-        android:onClick="playBtnHandler"
+        android:onClick="startMenuBtnHandler"
         android:src="@drawable/single"
         android:tag="Single"
         tools:ignore="ContentDescription" />
@@ -46,21 +47,24 @@
         android:id="@+id/imgMulti"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/textPlayMultiplayer_StartMenu"
-        android:layout_alignLeft="@+id/imageQuit_StartMenu"
-        android:layout_alignStart="@+id/imageQuit_StartMenu"
-        android:onClick="playBtnHandler"
+        android:layout_alignLeft="@+id/imgSinglePlayer"
+        android:layout_alignStart="@+id/imgSinglePlayer"
+        android:layout_below="@+id/imgSinglePlayer"
+        android:layout_marginTop="@dimen/startMenuMarginTopImages"
+        android:onClick="startMenuBtnHandler"
         android:src="@drawable/multi"
         android:tag="Multi"
         tools:ignore="ContentDescription" />
 
     <TextView
-        android:id="@+id/textPlaySingleplayer_StartMenu"
+        android:id="@+id/txtSingle_StartMenu"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/imageQuit_StartMenu"
-        android:layout_toEndOf="@+id/imgLogo"
-        android:layout_toRightOf="@+id/imgLogo"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="@dimen/marginLeftMenuItems"
+        android:layout_marginStart="@dimen/marginLeftMenuItems"
+        android:layout_toEndOf="@+id/imgSinglePlayer"
+        android:layout_toRightOf="@+id/imgSinglePlayer"
         android:text="@string/textSingle"
         android:textSize="@dimen/menuItem" />
 
@@ -68,12 +72,38 @@
         android:id="@+id/textPlayMultiplayer_StartMenu"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/textPlaySingleplayer_StartMenu"
-        android:layout_alignStart="@+id/textPlaySingleplayer_StartMenu"
-        android:layout_below="@+id/textPlaySingleplayer_StartMenu"
-        android:layout_marginTop="43dp"
+        android:layout_below="@id/txtSingle_StartMenu"
+        android:layout_marginLeft="@dimen/marginLeftMenuItems"
+        android:layout_marginStart="@dimen/marginLeftMenuItems"
+        android:layout_marginTop="@dimen/startMenuMarginTopTexts"
+        android:layout_toEndOf="@+id/imgMulti"
+        android:layout_toRightOf="@+id/imgMulti"
         android:text="@string/textMulti"
         android:textSize="@dimen/menuItem" />
+
+    <ImageView
+        android:id="@+id/imgSettings"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/imgMulti"
+        android:layout_alignStart="@+id/imgMulti"
+        android:layout_below="@+id/imgMulti"
+        android:layout_marginTop="@dimen/startMenuMarginTopImages"
+        app:srcCompat="@drawable/settings" />
+
+    <TextView
+        android:id="@+id/txtSettings"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/imgSettings"
+        android:layout_alignLeft="@+id/textPlayMultiplayer_StartMenu"
+        android:layout_alignStart="@+id/textPlayMultiplayer_StartMenu"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/startMenuMarginTopTexts"
+        android:onClick="startMenuBtnHandler"
+        android:tag="Settings"
+        android:text="Settings"
+        android:textSize="@dimen/menuItem"/>
 
 
 </RelativeLayout>

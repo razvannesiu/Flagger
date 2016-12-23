@@ -26,7 +26,7 @@ public class Start extends AppCompatActivity {
      *
      * @param view View for this handler.
      */
-    public void playBtnHandler(View view) {
+    public void startMenuBtnHandler(View view) {
         Intent intent = null;
 
         String tag = view.getTag().toString();
@@ -38,6 +38,9 @@ public class Start extends AppCompatActivity {
         else if(tag.equals("Multi")){
             isMultiPlayer = true;
             intent = new Intent(Start.this, MultiPlayerQuiz.class);
+        }
+        else if(tag.equals("Settings")){
+            intent = new Intent(Start.this, Settings.class);
         }
 
         startActivity(intent);

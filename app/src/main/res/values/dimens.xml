@@ -12,6 +12,9 @@
     <dimen name="welcomeOrByeMessage">40dp</dimen>
     <dimen name="winnerDisplay">18dp</dimen>
     <dimen name="textQuestion">20dp</dimen>
+    <dimen name="marginLeftMenuItems">15dp</dimen>
+    <dimen name="startMenuMarginTopImages">25dp</dimen>
+    <dimen name="startMenuMarginTopTexts">32dp</dimen>
 
     <!-- Default screen margins, per the Android Design guidelines. -->
     <dimen name="activity_horizontal_margin">16dp</dimen>

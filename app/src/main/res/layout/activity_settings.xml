@@ -18,7 +18,11 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentRight="true"
         android:layout_alignParentStart="true"
-        android:text="TextView" />
+        android:background="@color/colorPrimary"
+        android:gravity="center"
+        android:text="@string/textSettings"
+        android:textColor="@color/screen"
+        android:textSize="@dimen/txtTitle" />
 
     <TextView
         android:id="@+id/txtSingle"
@@ -26,48 +30,113 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/txtTitle"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="62dp"
-        android:text="TextView" />
+        android:layout_marginTop="@dimen/marginSettingsBelowTitle"
+        android:gravity="center"
+        android:text="@string/textSingle"
+        android:textColor="@color/colorPrimaryDark"
+        android:textSize="@dimen/txtSubtitle" />
 
-    <SeekBar
-        android:id="@+id/seekBar"
-        android:layout_width="wrap_content"
+    <TextView
+        android:id="@+id/txtQuestionsMulti"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/txtMulti"
+        android:layout_marginTop="@dimen/marginSettingsBelowTitle"
+        android:text="@string/textQuestionsPerGame"
+        android:textSize="@dimen/txtDescription" />
+
+    <TextView
+        android:id="@+id/txtQuestionsSingle"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_below="@+id/txtSingle"
-        android:layout_marginLeft="29dp"
-        android:layout_marginStart="29dp"
-        android:layout_marginTop="68dp" />
+        android:layout_marginTop="@dimen/marginSettingsBelowTitle"
+        android:text="@string/textQuestionsPerGame"
+        android:textSize="@dimen/txtDescription" />
 
     <SeekBar
-        android:id="@+id/seekBar2"
-        android:layout_width="wrap_content"
+        android:id="@+id/sbNrQuestionsSingle"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignEnd="@+id/seekBar"
-        android:layout_alignRight="@+id/seekBar"
-        android:layout_below="@+id/seekBar"
-        android:layout_marginTop="67dp" />
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/txtQuestionsSingle"
+        android:layout_marginTop="@dimen/marginSettingsBelowBars"
+        android:max="30"
+        android:progress="5" />
+
+    <TextView
+        android:id="@+id/txtSecondsSingle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/sbNrQuestionsSingle"
+        android:layout_marginTop="@dimen/marginSettingsBelowBars"
+        android:text="@string/textSecondsPerQuestions"
+        android:textSize="@dimen/txtDescription" />
 
     <SeekBar
-        android:id="@+id/seekBar3"
-        android:layout_width="wrap_content"
+        android:id="@+id/sbNrSecondsSingle"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignEnd="@+id/seekBar2"
-        android:layout_alignRight="@+id/seekBar2"
-        android:layout_below="@+id/seekBar2"
-        android:layout_marginEnd="9dp"
-        android:layout_marginRight="9dp"
-        android:layout_marginTop="88dp" />
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/txtSecondsSingle"
+        android:layout_centerVertical="true"
+        android:layout_marginTop="@dimen/marginSettingsBelowBars"
+        android:max="30"
+        android:progress="10" />
+
+    <TextView
+        android:id="@+id/txtMulti"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/sbNrSecondsSingle"
+        android:layout_marginTop="@dimen/marginSettingsBelowBars"
+        android:gravity="center"
+        android:text="@string/textMulti"
+        android:textColor="@color/colorPrimaryDark"
+        android:textSize="@dimen/txtSubtitle" />
 
     <SeekBar
-        android:id="@+id/seekBar4"
-        android:layout_width="wrap_content"
+        android:id="@+id/sbNrQuestionsMulti"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/seekBar2"
-        android:layout_alignStart="@+id/seekBar2"
-        android:layout_below="@+id/seekBar3"
-        android:layout_marginTop="67dp" />
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/txtQuestionsMulti"
+        android:layout_marginTop="@dimen/marginSettingsBelowBars"
+        android:max="30"
+        android:progress="5" />
+
+    <TextView
+        android:id="@+id/txtSecondsMulti"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/sbNrQuestionsMulti"
+        android:layout_marginTop="@dimen/marginSettingsBelowBars"
+        android:text="@string/textSecondsPerQuestions"
+        android:textSize="@dimen/txtDescription" />
+
+    <SeekBar
+        android:id="@+id/sbNrSecondsMulti"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/txtSecondsMulti"
+        android:layout_marginTop="@dimen/marginSettingsBelowBars"
+        android:max="30"
+        android:progress="10" />
 
 
 </RelativeLayout>

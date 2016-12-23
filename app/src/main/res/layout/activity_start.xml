@@ -102,7 +102,7 @@
         android:layout_marginTop="@dimen/startMenuMarginTopTexts"
         android:onClick="startMenuBtnHandler"
         android:tag="Settings"
-        android:text="Settings"
+        android:text="@string/textSettings"
         android:textSize="@dimen/menuItem"/>
 
 

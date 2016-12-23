@@ -2,7 +2,10 @@
     <string name="appName">Flagger</string>
     <string name="textMulti">Offline Multiplayer</string>
     <string name="textSingle">Single Player</string>
+    <string name="textSettings">Settings</string>
     <string name="textRematch">Rematch</string>
     <string name="textGoBackToMenu">Back to Menu</string>
+    <string name="textQuestionsPerGame">Questions / Game</string>
+    <string name="textSecondsPerQuestions">Seconds / Question</string>
     <string name="textGameOver">Game over</string>
 </resources>

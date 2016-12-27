@@ -90,6 +90,7 @@
         android:layout_alignStart="@+id/imgMulti"
         android:layout_below="@+id/imgMulti"
         android:layout_marginTop="@dimen/startMenuMarginTopImages"
+        android:onClick="startMenuBtnHandler"
         android:src="@drawable/settings"
         android:tag="Settings" />
 
@@ -102,7 +103,6 @@
         android:layout_alignStart="@+id/textPlayMultiplayer_StartMenu"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="@dimen/startMenuMarginTopTexts"
-        android:onClick="startMenuBtnHandler"
         android:tag="Settings"
         android:text="@string/textSettings"
         android:textSize="@dimen/menuItem"/>

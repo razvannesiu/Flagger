@@ -15,11 +15,11 @@
     <dimen name="marginLeftMenuItems">15dp</dimen>
     <dimen name="startMenuMarginTopImages">25dp</dimen>
     <dimen name="startMenuMarginTopTexts">32dp</dimen>
-    <dimen name="txtTitle">50dp</dimen>
-    <dimen name="txtSubtitle">35dp</dimen>
-    <dimen name="txtDescription">20dp</dimen>
-    <dimen name="marginSettingsBelowTitle">20dp</dimen>
-    <dimen name="marginSettingsBelowBars">15dp</dimen>
+    <dimen name="txtTitle">30dp</dimen>
+    <dimen name="txtSubtitle">20dp</dimen>
+    <dimen name="txtDescription">15dp</dimen>
+    <dimen name="marginSettingsBelowTitle">15dp</dimen>
+    <dimen name="marginSettingsBelowBars">10dp</dimen>
 
     <!-- Default screen margins, per the Android Design guidelines. -->
     <dimen name="activity_horizontal_margin">16dp</dimen>

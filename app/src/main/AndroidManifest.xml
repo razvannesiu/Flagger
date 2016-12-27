@@ -19,6 +19,9 @@
             android:name=".End"
             android:screenOrientation="landscape" />
         <activity
+            android:name=".Settings"
+            android:screenOrientation="portrait" />
+        <activity
             android:name=".Start"
             android:screenOrientation="landscape">
             <intent-filter>
@@ -27,7 +30,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Settings"></activity>
     </application>
 
 </manifest>

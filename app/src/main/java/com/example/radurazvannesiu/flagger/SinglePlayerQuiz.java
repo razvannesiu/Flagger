@@ -167,6 +167,7 @@ public class SinglePlayerQuiz extends AppCompatActivity {
                 //if the current questionNumber reached the # of QUESTIONS_PER_MATCH, go to End Menu
                 if (SinglePlayerQuiz.getQuestionNumber() > SinglePlayerQuiz.QUESTIONS_PER_MATCH) {
                     Intent intent = new Intent(SinglePlayerQuiz.this, End.class);
+                    finish();
                     startActivity(intent);
                 }
                 //otherwise, load the next one
@@ -234,5 +235,10 @@ public class SinglePlayerQuiz extends AppCompatActivity {
         else{
             didPlayerAnswerCorrectly = false;
         }
+    }
+
+    @Override
+    public void onBackPressed() {
+     finish();
     }
 }

@@ -72,6 +72,7 @@ public class End extends AppCompatActivity {
             intent = new Intent(End.this, SinglePlayerQuiz.class);
         }
 
+        finish();
         startActivity(intent);
     }
 
@@ -80,8 +81,12 @@ public class End extends AppCompatActivity {
      * @param backToMenuBtn The view of this button.
      */
     public void backToMenuHandler(View backToMenuBtn){
-        Intent intent = new Intent(End.this, Start.class);
-        startActivity(intent);
+        finish();
+    }
+
+    @Override
+    public void onBackPressed() {
+        finish();
     }
 
 }

@@ -185,6 +185,7 @@ public class MultiPlayerQuiz extends AppCompatActivity {
                 if (MultiPlayerQuiz.getQuestionNumber() > QUESTIONS_PER_MATCH) {
                     Intent intent = new Intent(MultiPlayerQuiz.this, End.class);
                     startActivity(intent);
+                    finish();
                 }
                 //otherwise, load the next one
                 else {
@@ -292,5 +293,10 @@ public class MultiPlayerQuiz extends AppCompatActivity {
         else{
             didPlayer2AnswerCorrectly = false;
         }
+    }
+
+    @Override
+    public void onBackPressed() {
+        finish();
     }
 }

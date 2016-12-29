@@ -71,9 +71,8 @@ public class End extends AppCompatActivity {
         else{
             intent = new Intent(End.this, SinglePlayerQuiz.class);
         }
-
-        finish();
         startActivity(intent);
+        finish();
     }
 
     /**

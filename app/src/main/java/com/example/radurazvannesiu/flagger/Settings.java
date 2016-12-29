@@ -15,6 +15,8 @@ public class Settings extends AppCompatActivity {
     private TextView tvSinglePlayerNrSeconds;
     private TextView tvMultiPlayerNrQuestions;
     private TextView tvMultiPlayerNrSeconds;
+    private int MIN_SECONDS = 3;
+    private int MIN_QUESTIONS = 3;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,8 +50,13 @@ public class Settings extends AppCompatActivity {
         singlePlayerQuestionsBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-                SinglePlayerQuiz.QUESTIONS_PER_MATCH = progress;
-                tvSinglePlayerNrQuestions.setText(String.valueOf(SinglePlayerQuiz.QUESTIONS_PER_MATCH));
+                if (progress >= MIN_QUESTIONS) {
+                    SinglePlayerQuiz.QUESTIONS_PER_MATCH = progress;
+                    tvSinglePlayerNrQuestions.setText(String.valueOf(SinglePlayerQuiz.QUESTIONS_PER_MATCH));
+                }
+                else{
+                    seekBar.setProgress(MIN_QUESTIONS);
+                }
             }
 
             @Override
@@ -66,8 +73,13 @@ public class Settings extends AppCompatActivity {
         singlePlayerSecondsBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-                SinglePlayerQuiz.SECONDS_PER_QUESTION = progress;
-                tvSinglePlayerNrSeconds.setText(String.valueOf(SinglePlayerQuiz.SECONDS_PER_QUESTION));
+                if (progress >= MIN_SECONDS) {
+                    SinglePlayerQuiz.SECONDS_PER_QUESTION = progress;
+                    tvSinglePlayerNrSeconds.setText(String.valueOf(SinglePlayerQuiz.SECONDS_PER_QUESTION));
+                }
+                else{
+                    seekBar.setProgress(MIN_SECONDS);
+                }
             }
 
             @Override
@@ -84,8 +96,13 @@ public class Settings extends AppCompatActivity {
         multiPlayerQuestionsBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-                MultiPlayerQuiz.QUESTIONS_PER_MATCH = progress;
-                tvMultiPlayerNrQuestions.setText(String.valueOf(MultiPlayerQuiz.QUESTIONS_PER_MATCH));
+                if (progress >= MIN_QUESTIONS) {
+                    MultiPlayerQuiz.QUESTIONS_PER_MATCH = progress;
+                    tvMultiPlayerNrQuestions.setText(String.valueOf(MultiPlayerQuiz.QUESTIONS_PER_MATCH));
+                }
+                else{
+                    seekBar.setProgress(MIN_QUESTIONS);
+                }
             }
 
             @Override
@@ -102,8 +119,13 @@ public class Settings extends AppCompatActivity {
         multiPlayerSecondsBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-                MultiPlayerQuiz.SECONDS_PER_QUESTION = progress;
-                tvMultiPlayerNrSeconds.setText(String.valueOf(MultiPlayerQuiz.SECONDS_PER_QUESTION));
+                if (progress >= MIN_SECONDS) {
+                    MultiPlayerQuiz.SECONDS_PER_QUESTION = progress;
+                    tvMultiPlayerNrSeconds.setText(String.valueOf(MultiPlayerQuiz.SECONDS_PER_QUESTION));
+                }
+                else{
+                    seekBar.setProgress(MIN_SECONDS);
+                }
             }
 
             @Override

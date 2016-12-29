@@ -88,6 +88,9 @@ public class SinglePlayerQuiz extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_single_player_quiz);
 
+        //load the new preferences from the settings file
+        Settings.loadPreferencesFromFile(this);
+
         //load resources
         res = getResources();
 
@@ -169,6 +172,7 @@ public class SinglePlayerQuiz extends AppCompatActivity {
                     Intent intent = new Intent(SinglePlayerQuiz.this, End.class);
                     startActivity(intent);
                     finish();
+                    System.exit(0);
                 }
                 //otherwise, load the next one
                 else {
@@ -239,6 +243,7 @@ public class SinglePlayerQuiz extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-     finish();
+        finish();
+        System.exit(0);
     }
 }

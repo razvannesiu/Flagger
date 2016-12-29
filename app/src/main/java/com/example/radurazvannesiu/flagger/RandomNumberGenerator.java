@@ -92,6 +92,7 @@ public class RandomNumberGenerator {
      * To avoid an {@exception #ArrayIndexOutOfBoundsException } given by indexForFlagIdsList,
      * we use {@link #resetFlagIdGenerator()}, after indexForFlagIdsList becomes equal to the size
      * of the list of flag Ids.
+     * @see QuestionDatabase
      */
     public int generateRandomFlagId() {
         //get the flagId (flagId has to be less than the NR_OF_FLAGS stored in the database)

@@ -114,6 +114,9 @@ public class MultiPlayerQuiz extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_multi_player_quiz);
 
+        //load the new preferences from the settings file
+        Settings.loadPreferencesFromFile(this);
+
         //initialize animation (goes to 25% transparency)
         alphaAnimation = new AlphaAnimation(1, 0.25f);
         alphaAnimation.setDuration(BTN_ANIMATION_DURATION_IN_MILLIS);
@@ -268,12 +271,7 @@ public class MultiPlayerQuiz extends AppCompatActivity {
         flag.startAnimation(alphaAnimation);
 
         //set validity of answer
-        if (flags.get(tag) == QuestionDatabase.QUESTION_ANSWER_MAP[questionId]) {
-            didPlayer1AnswerCorrectly = true;
-        }
-        else{
-            didPlayer1AnswerCorrectly = false;
-        }
+        didPlayer1AnswerCorrectly = (flags.get(tag) == QuestionDatabase.QUESTION_ANSWER_MAP[questionId]);
     }
 
     /**
@@ -287,16 +285,12 @@ public class MultiPlayerQuiz extends AppCompatActivity {
         flag.startAnimation(alphaAnimation);
 
         //set validity of answer
-        if (flags.get(tag) == QuestionDatabase.QUESTION_ANSWER_MAP[questionId]) {
-            didPlayer2AnswerCorrectly = true;
-        }
-        else{
-            didPlayer2AnswerCorrectly = false;
-        }
+        didPlayer2AnswerCorrectly = (flags.get(tag) == QuestionDatabase.QUESTION_ANSWER_MAP[questionId]);
     }
 
     @Override
     public void onBackPressed() {
         finish();
+        System.exit(0);
     }
 }

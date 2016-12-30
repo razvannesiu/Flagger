@@ -19,34 +19,22 @@
         android:textSize="@dimen/welcomeOrByeMessage" />
 
     <ImageView
-        android:id="@+id/imageRematch"
+        android:id="@+id/imgRematch"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignLeft="@+id/textGameOver"
         android:layout_alignStart="@+id/textGameOver"
-        android:layout_alignTop="@+id/textRematch"
-        android:layout_marginLeft="44dp"
-        android:layout_marginStart="44dp"
+        android:layout_centerVertical="true"
         android:onClick="rematchHandler"
         android:src="@drawable/rematch"
         tools:ignore="ContentDescription" />
 
-    <TextView
-        android:id="@+id/textRematch"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerVertical="true"
-        android:layout_toEndOf="@+id/imageRematch"
-        android:layout_toRightOf="@+id/imageRematch"
-        android:text="@string/textRematch"
-        android:textSize="@dimen/menuItem" />
-
     <ImageView
-        android:id="@+id/imageQuit_EndMenu"
+        android:id="@+id/imgBackToMenu"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/imageRematch"
-        android:layout_marginTop="15dp"
+        android:layout_below="@+id/imgRematch"
+        android:layout_marginTop="@dimen/menuItemMarginTopImages"
         android:layout_toLeftOf="@+id/textRematch"
         android:layout_toStartOf="@+id/textRematch"
         android:onClick="backToMenuHandler"
@@ -57,9 +45,12 @@
         android:id="@+id/txtBack_EndMenu"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/imageQuit_EndMenu"
-        android:layout_alignLeft="@+id/textRematch"
-        android:layout_alignStart="@+id/textRematch"
+        android:layout_alignBottom="@+id/imgBackToMenu"
+        android:layout_marginLeft="@dimen/marginLeftMenuItems"
+        android:layout_marginStart="@dimen/marginLeftMenuItems"
+        android:layout_marginTop="@dimen/menuItemMarginTopTexts"
+        android:layout_toEndOf="@+id/imgBackToMenu"
+        android:layout_toRightOf="@+id/imgBackToMenu"
         android:text="@string/textGoBackToMenu"
         android:textSize="@dimen/menuItem" />
 
@@ -70,5 +61,17 @@
         android:layout_below="@+id/textGameOver"
         android:layout_centerHorizontal="true"
         android:textSize="@dimen/winnerDisplay" />
+
+    <TextView
+        android:id="@+id/textRematch"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:layout_marginLeft="@dimen/marginLeftMenuItems"
+        android:layout_marginStart="@dimen/marginLeftMenuItems"
+        android:layout_toEndOf="@+id/imgRematch"
+        android:layout_toRightOf="@+id/imgRematch"
+        android:text="@string/textRematch"
+        android:textSize="@dimen/menuItem" />
 
 </RelativeLayout>

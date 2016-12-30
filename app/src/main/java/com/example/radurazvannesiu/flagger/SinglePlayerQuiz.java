@@ -172,7 +172,6 @@ public class SinglePlayerQuiz extends AppCompatActivity {
                     Intent intent = new Intent(SinglePlayerQuiz.this, End.class);
                     startActivity(intent);
                     finish();
-                    System.exit(0);
                 }
                 //otherwise, load the next one
                 else {
@@ -233,12 +232,7 @@ public class SinglePlayerQuiz extends AppCompatActivity {
         flag.startAnimation(alphaAnimation);
 
         //set validity of answer
-        if (flags.get(tag) == QuestionDatabase.QUESTION_ANSWER_MAP[questionId]) {
-            didPlayerAnswerCorrectly = true;
-        }
-        else{
-            didPlayerAnswerCorrectly = false;
-        }
+        didPlayerAnswerCorrectly = (flags.get(tag) == QuestionDatabase.QUESTION_ANSWER_MAP[questionId]);
     }
 
     @Override

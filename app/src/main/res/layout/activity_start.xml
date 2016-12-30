@@ -30,7 +30,8 @@
         android:adjustViewBounds="true"
         android:cropToPadding="false"
         android:scaleType="center"
-        android:src="@mipmap/ic_launcher" />
+        android:src="@mipmap/ic_launcher"
+        tools:ignore="ContentDescription" />
 
     <ImageView
         android:id="@+id/imgSinglePlayer"
@@ -51,7 +52,7 @@
         android:layout_alignLeft="@+id/imgSinglePlayer"
         android:layout_alignStart="@+id/imgSinglePlayer"
         android:layout_below="@+id/imgSinglePlayer"
-        android:layout_marginTop="@dimen/startMenuMarginTopImages"
+        android:layout_marginTop="@dimen/menuItemMarginTopImages"
         android:onClick="startMenuBtnHandler"
         android:src="@drawable/multi"
         android:tag="Multi"
@@ -76,7 +77,7 @@
         android:layout_below="@id/txtSingle_StartMenu"
         android:layout_marginLeft="@dimen/marginLeftMenuItems"
         android:layout_marginStart="@dimen/marginLeftMenuItems"
-        android:layout_marginTop="@dimen/startMenuMarginTopTexts"
+        android:layout_marginTop="@dimen/menuItemMarginTopTexts"
         android:layout_toEndOf="@+id/imgMulti"
         android:layout_toRightOf="@+id/imgMulti"
         android:text="@string/textMulti"
@@ -89,7 +90,7 @@
         android:layout_alignLeft="@+id/imgMulti"
         android:layout_alignStart="@+id/imgMulti"
         android:layout_below="@+id/imgMulti"
-        android:layout_marginTop="@dimen/startMenuMarginTopImages"
+        android:layout_marginTop="@dimen/menuItemMarginTopImages"
         android:onClick="startMenuBtnHandler"
         android:src="@drawable/settings"
         android:tag="Settings" />
@@ -102,7 +103,7 @@
         android:layout_alignLeft="@+id/textPlayMultiplayer_StartMenu"
         android:layout_alignStart="@+id/textPlayMultiplayer_StartMenu"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="@dimen/startMenuMarginTopTexts"
+        android:layout_marginTop="@dimen/menuItemMarginTopTexts"
         android:tag="Settings"
         android:text="@string/textSettings"
         android:textSize="@dimen/menuItem"/>

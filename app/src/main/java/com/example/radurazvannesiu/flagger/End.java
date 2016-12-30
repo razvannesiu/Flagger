@@ -30,7 +30,7 @@ public class End extends AppCompatActivity {
             gameOverLogicMultiPlayer();
         }
         else{
-            endGameStatus = String.format(Locale.getDefault(), "Your score is %.0f%%!",
+            endGameStatus = String.format(Locale.getDefault(), "Your score is %.0f%%",
                     Math.ceil((100 * SinglePlayerQuiz.getScore()) / (float) SinglePlayerQuiz.QUESTIONS_PER_MATCH));
         }
 

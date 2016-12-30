@@ -31,16 +31,18 @@ public class Start extends AppCompatActivity {
 
         String tag = view.getTag().toString();
 
-        if(tag.equals("Single")){
-            isMultiPlayer = false;
-            intent = new Intent(Start.this, SinglePlayerQuiz.class);
-        }
-        else if(tag.equals("Multi")){
-            isMultiPlayer = true;
-            intent = new Intent(Start.this, MultiPlayerQuiz.class);
-        }
-        else if(tag.equals("Settings")){
-            intent = new Intent(Start.this, Settings.class);
+        switch (tag) {
+            case "Single":
+                isMultiPlayer = false;
+                intent = new Intent(Start.this, SinglePlayerQuiz.class);
+                break;
+            case "Multi":
+                isMultiPlayer = true;
+                intent = new Intent(Start.this, MultiPlayerQuiz.class);
+                break;
+            case "Settings":
+                intent = new Intent(Start.this, Settings.class);
+                break;
         }
 
         startActivity(intent);

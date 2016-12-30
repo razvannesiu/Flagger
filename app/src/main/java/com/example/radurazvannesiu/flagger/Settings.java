@@ -78,7 +78,8 @@ public class Settings extends AppCompatActivity {
         tvMultiPlayerNrQuestions = (TextView) findViewById(R.id.tvNumberMultiQuestions);
         tvMultiPlayerNrSeconds = (TextView) findViewById(R.id.tvNumberMultiSeconds);
 
-        //update SeekBar's and TextView's
+        //load previous preferences (if any), and update SeekBar's and TextView's
+        loadPreferencesFromFile(this);
         updatePreferencesOnScreen();
 
         singlePlayerQuestionsBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {

@@ -4,4 +4,6 @@
     <color name="colorPrimaryDark">#7D1D1D</color>
     <color name="colorAccent">#ff5722</color>
     <color name="screen">#fff9c4</color>
+    <color name="colorCorrect">#64dd17</color>
+    <color name="colorWrong">#c62828</color>
 </resources>

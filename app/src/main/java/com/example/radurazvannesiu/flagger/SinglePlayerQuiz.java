@@ -1,5 +1,6 @@
 package com.example.radurazvannesiu.flagger;
 
+import android.app.Dialog;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.graphics.Color;
@@ -11,6 +12,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.Display;
 import android.view.View;
 import android.view.animation.AlphaAnimation;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.SeekBar;
 import android.widget.TextView;
@@ -33,6 +35,8 @@ public class SinglePlayerQuiz extends AppCompatActivity {
     public TextView txt_timer;
     //seekBar that displays score
     SeekBar scoreBar;
+    //dialog box that displays the correct flag
+    Dialog dialog;
     //array list that stores the options available for each question
     private ArrayList<Integer> flags;
     //the TextViews
@@ -167,16 +171,7 @@ public class SinglePlayerQuiz extends AppCompatActivity {
                 //increment question number
                 questionNumber += 1;
 
-                //if the current questionNumber reached the # of QUESTIONS_PER_MATCH, go to End Menu
-                if (SinglePlayerQuiz.getQuestionNumber() > SinglePlayerQuiz.QUESTIONS_PER_MATCH) {
-                    Intent intent = new Intent(SinglePlayerQuiz.this, End.class);
-                    startActivity(intent);
-                    finish();
-                }
-                //otherwise, load the next one
-                else {
-                    loadQuestion();
-                }
+                showAnswerBox(questionId);
             }
         };
     }
@@ -240,4 +235,60 @@ public class SinglePlayerQuiz extends AppCompatActivity {
         finish();
         System.exit(0);
     }
+
+    /**
+     * Show dialog box with correct answer.
+     * @param questionId The ID of the current question.
+     */
+    private void showAnswerBox(int questionId) {
+        dialog = new Dialog(this, R.style.DialogWithTitleCentered);
+        dialog.setContentView(R.layout.single_player_answer_box);
+        int flagId = QuestionDatabase.QUESTION_ANSWER_MAP[questionId];
+        ImageButton ibCorrectFlag = (ImageButton) dialog.findViewById(R.id.ibCorrectFlag);
+        String nameOfCorrectFlag = QuestionDatabase.FLAGS[flagId];
+        int flagImageResource = res.getIdentifier(nameOfCorrectFlag, "drawable", packageName);
+        ibCorrectFlag.setImageResource(flagImageResource);
+
+        Button btnNextQuestion = (Button) dialog.findViewById(R.id.btnNextQuestion);
+        btnNextQuestion.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                dialog.cancel();
+
+                //if the current questionNumber reached the # of QUESTIONS_PER_MATCH, go to End Menu
+                if (SinglePlayerQuiz.getQuestionNumber() > SinglePlayerQuiz.QUESTIONS_PER_MATCH) {
+                    Intent intent = new Intent(SinglePlayerQuiz.this, End.class);
+                    startActivity(intent);
+                    finish();
+                }
+                //otherwise load next question
+                else {
+                    loadQuestion();
+                }
+            }
+        });
+
+        TextView tvTitle = (TextView) dialog.findViewById(R.id.tvTitle);
+        int color = didPlayerAnswerCorrectly? R.color.colorCorrect : R.color.colorWrong;
+        tvTitle.setTextColor(res.getColor(color));
+        tvTitle.setText(getFormattedFlagName(nameOfCorrectFlag));
+        dialog.setTitle(R.string.dialogTitle);
+        dialog.show();
+    }
+
+    /**
+     * Formats a flag name so that it can be displayed to the user.
+     * @param flagName The flag name, which contains underscores, and it's all in lowercase.
+     * @return The nicely formatted name of the flag.
+     */
+    private String getFormattedFlagName(String flagName){
+        String nameToDisplay = "";
+        String[] names = flagName.split("_");
+        for(String name: names){
+            nameToDisplay += name.toUpperCase().charAt(0) + name.substring(1) + " ";
+        }
+
+        return nameToDisplay;
+    }
+
 }

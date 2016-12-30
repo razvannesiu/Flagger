@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent" android:layout_height="match_parent"
+    android:background="@color/screen"
+    android:orientation="vertical"
+    android:paddingLeft="@dimen/dialogBoxPadding"
+    android:paddingRight="@dimen/dialogBoxPadding">
+
+    <TextView
+        android:id="@+id/tvTitle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_margin="@dimen/dialogBoxMargin"
+        android:gravity="center"
+        android:text="Country Name"
+        android:textSize="@dimen/txtTitle" />
+
+    <ImageButton
+        android:id="@+id/ibCorrectFlag"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/dialogBoxMargin"
+        android:background="@android:color/transparent"
+        tools:ignore="ContentDescription" />
+
+    <Button
+        android:id="@+id/btnNextQuestion"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="@dimen/dialogBoxMargin"
+        android:background="@color/colorPrimary"
+        android:text="@string/dialogButton"
+        android:textColor="@color/screen"
+        android:textSize="@dimen/btnDialogBox" />
+</LinearLayout>

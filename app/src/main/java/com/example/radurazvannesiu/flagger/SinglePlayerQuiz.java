@@ -287,7 +287,9 @@ public class SinglePlayerQuiz extends AppCompatActivity {
         for(String name: names){
             nameToDisplay += name.toUpperCase().charAt(0) + name.substring(1) + " ";
         }
-
+        //TODO rename flags like bosniaherzegovina both in db and in drawable
+        //TODO add new icon for back to main menu
+        //TODO add multi player box (optional- non scalllable size)
         return nameToDisplay;
     }
 

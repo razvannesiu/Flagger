@@ -7,6 +7,7 @@ import java.util.Collections;
  * Singleton class that stores the questions & their IDs, flags & their IDs,
  * and an array that maps a question ID to its corresponding flag ID.
  */
+@SuppressWarnings("WeakerAccess")
 public class QuestionDatabase {
 
     //total # of questions store in database
@@ -548,7 +549,7 @@ public class QuestionDatabase {
      */
     public ArrayList<Integer> getFlagIndexesArrayList(Integer questionNr) {
 
-        ArrayList<Integer> flagIndexes = new ArrayList<Integer>();
+        ArrayList<Integer> flagIndexes = new ArrayList<>();
         //add the correct flag ID for this question
         flagIndexes.add(QUESTION_ANSWER_MAP[questionNr]);
         int number;

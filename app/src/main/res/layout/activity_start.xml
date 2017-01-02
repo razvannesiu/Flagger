@@ -94,7 +94,8 @@
         android:layout_marginTop="@dimen/menuItemMarginTopImages"
         android:onClick="startMenuBtnHandler"
         android:src="@drawable/settings"
-        android:tag="Settings" />
+        android:tag="Settings"
+        tools:ignore="ContentDescription" />
 
     <TextView
         android:id="@+id/txtSettings"

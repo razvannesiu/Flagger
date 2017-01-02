@@ -8,6 +8,7 @@ import java.util.Collections;
  *
  * @author Razvan Nesiu
  */
+@SuppressWarnings("WeakerAccess")
 public class RandomNumberGenerator {
 
     /* Determines how many times a flag ID occurs in the list.
@@ -23,9 +24,9 @@ public class RandomNumberGenerator {
     final int NR_OF_QUESTION_IDS_IN_SET = QuestionDatabase.NR_OF_QUESTIONS;
     final int NR_OF_FLAG_IDS_IN_LIST = QuestionDatabase.NR_OF_FLAGS * REPEAT_FLAGS_X_TIMES;
     //set of question IDs (one question ID occurs only once in the set)
-    private ArrayList<Integer> setOfQuestionIds = new ArrayList<Integer>();
+    private final ArrayList<Integer> setOfQuestionIds = new ArrayList<>();
     //list of flag IDs (one flag ID can occur multiple times in the list)
-    private ArrayList<Integer> listOfFlagIds = new ArrayList<Integer>();
+    private final ArrayList<Integer> listOfFlagIds = new ArrayList<>();
 
     /**
      * Private default constructor for this singleton class.

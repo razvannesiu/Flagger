@@ -22,7 +22,6 @@
     <dimen name="marginSettingsBelowBars">10dp</dimen>
     <dimen name="btnDialogBox">24dp</dimen>
     <dimen name="dialogBoxMargin">15dp</dimen>
-    <dimen name="dialogBoxPadding">60dp</dimen>
     <dimen name="generalPadding">6dp</dimen>
     <dimen name="scorePadding">40dp</dimen>
     <dimen name="boxLengthPadding">150dp</dimen>

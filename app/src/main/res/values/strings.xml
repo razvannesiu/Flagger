@@ -11,4 +11,6 @@
     <string name="dialogButtonCorrect">Got it!</string>
     <string name="dialogButtonWrong">Next time I\'ll know it!</string>
     <string name="dialogTitle">Correct Answer</string>
+    <string name="defaultQuestions">5</string>
+    <string name="defaultSeconds">10</string>
 </resources>

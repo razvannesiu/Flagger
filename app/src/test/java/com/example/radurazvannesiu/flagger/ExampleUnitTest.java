@@ -13,8 +13,8 @@ import static org.junit.Assert.assertNotEquals;
  */
 public class ExampleUnitTest {
 
-    MultiPlayerQuiz multiPlayerQuiz;
-    ArrayList<Integer> flags;
+    private MultiPlayerQuiz multiPlayerQuiz;
+    private ArrayList<Integer> flags;
 
     @Before
     public void setup(){

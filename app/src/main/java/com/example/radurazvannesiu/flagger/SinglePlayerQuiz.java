@@ -20,6 +20,7 @@ import android.widget.TextView;
 import java.util.ArrayList;
 import java.util.Locale;
 
+@SuppressWarnings("ALL")
 public class SinglePlayerQuiz extends AppCompatActivity {
 
     public static final QuestionDatabase QDB = QuestionDatabase.getInstance();
@@ -31,6 +32,7 @@ public class SinglePlayerQuiz extends AppCompatActivity {
     private static int questionNumber;
     //the ID of a question from the database (eg: Q1 has ID = 75 in the database)
     private static int questionId;
+    private final RandomNumberGenerator generator = RandomNumberGenerator.getInstance();
     //initialize the TextView that displays the time left for a question to be answered
     public TextView txt_timer;
     //seekBar that displays score
@@ -46,23 +48,10 @@ public class SinglePlayerQuiz extends AppCompatActivity {
     private ImageButton sib1;
     private ImageButton sib2;
     private ImageButton sib3;
-    /* The following Strings represent the names of the flags displayed
-   (eg: flagNameForBtn1 = "france" is used to display France's flag
-   on button 1 from both player 1 & player 2)*/
-    private String flagNameForBtn1;
-    private String flagNameForBtn2;
-    private String flagNameForBtn3;
-    private String flagNameForBtn4;
-    // declaring the resources for the above mentioned buttons
-    private int resB1;
-    private int resB2;
-    private int resB3;
-    private int resB4;
     private Resources res;
     private String packageName;
     //set the CountDownTimer (both parameters are in milliseconds)
     private CountDownTimer timer;
-    private RandomNumberGenerator generator = RandomNumberGenerator.getInstance();
     private AlphaAnimation alphaAnimation;
     //check if players did answer the current question
     private boolean didPlayerAnswerCorrectly;
@@ -72,19 +61,9 @@ public class SinglePlayerQuiz extends AppCompatActivity {
         return questionNumber;
     }
 
-    //setter for questionNumber
-    public static void setQuestionNumber(int newQuestionNumber) {
-        questionNumber = newQuestionNumber;
-    }
-
     //getter for the score
     public static int getScore() {
         return score;
-    }
-
-    //setter for the score
-    public static void setScore(int newScore) {
-        score = newScore;
     }
 
     @Override
@@ -212,16 +191,16 @@ public class SinglePlayerQuiz extends AppCompatActivity {
 
         /* Since we have the IDs of the flags,
         we get from the database the names of the png files corresponding to those indexes.*/
-        flagNameForBtn1 = QuestionDatabase.FLAGS[flags.get(0)];
-        flagNameForBtn2 = QuestionDatabase.FLAGS[flags.get(1)];
-        flagNameForBtn3 = QuestionDatabase.FLAGS[flags.get(2)];
-        flagNameForBtn4 = QuestionDatabase.FLAGS[flags.get(3)];
+        String flagNameForBtn1 = QuestionDatabase.FLAGS[flags.get(0)];
+        String flagNameForBtn2 = QuestionDatabase.FLAGS[flags.get(1)];
+        String flagNameForBtn3 = QuestionDatabase.FLAGS[flags.get(2)];
+        String flagNameForBtn4 = QuestionDatabase.FLAGS[flags.get(3)];
 
         //set the values for the resources
-        resB1 = res.getIdentifier(flagNameForBtn1, "drawable", packageName);
-        resB2 = res.getIdentifier(flagNameForBtn2, "drawable", packageName);
-        resB3 = res.getIdentifier(flagNameForBtn3, "drawable", packageName);
-        resB4 = res.getIdentifier(flagNameForBtn4, "drawable", packageName);
+        int resB1 = res.getIdentifier(flagNameForBtn1, "drawable", packageName);
+        int resB2 = res.getIdentifier(flagNameForBtn2, "drawable", packageName);
+        int resB3 = res.getIdentifier(flagNameForBtn3, "drawable", packageName);
+        int resB4 = res.getIdentifier(flagNameForBtn4, "drawable", packageName);
 
         //draw the images of the flags on the buttons
         sib0.setImageResource(resB1);

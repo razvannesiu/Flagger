@@ -61,7 +61,8 @@
         android:layout_marginTop="@dimen/marginTopSingleplayer"
         android:background="@android:color/transparent"
         android:onClick="playerChoseAnswer"
-        android:tag="0" />
+        android:tag="0"
+        tools:ignore="ContentDescription" />
 
     <ImageButton
         android:id="@+id/sib1"
@@ -75,7 +76,8 @@
         android:layout_toRightOf="@+id/sib0"
         android:background="@android:color/transparent"
         android:onClick="playerChoseAnswer"
-        android:tag="1" />
+        android:tag="1"
+        tools:ignore="ContentDescription" />
 
     <ImageButton
         android:id="@+id/sib2"
@@ -89,7 +91,8 @@
         android:layout_toRightOf="@+id/sib1"
         android:background="@android:color/transparent"
         android:onClick="playerChoseAnswer"
-        android:tag="2" />
+        android:tag="2"
+        tools:ignore="ContentDescription" />
 
     <ImageButton
         android:id="@+id/sib3"
@@ -103,5 +106,6 @@
         android:layout_toRightOf="@+id/sib2"
         android:background="@android:color/transparent"
         android:onClick="playerChoseAnswer"
-        android:tag="3" />
+        android:tag="3"
+        tools:ignore="ContentDescription" />
 </RelativeLayout>

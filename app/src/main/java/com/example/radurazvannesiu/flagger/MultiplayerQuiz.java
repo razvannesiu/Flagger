@@ -23,6 +23,7 @@ import java.util.Locale;
  *
  * @author Razvan Nesiu.
  */
+@SuppressWarnings({"WeakerAccess"})
 public class MultiPlayerQuiz extends AppCompatActivity {
 
     public static final int MILLIS_IN_A_SECOND = 1000;
@@ -43,6 +44,7 @@ public class MultiPlayerQuiz extends AppCompatActivity {
     private static int questionNumber;
     //the ID of a question from the database (eg: Q1 has ID = 75 in the database)
     private static int questionId;
+    private final RandomNumberGenerator generator = RandomNumberGenerator.getInstance();
     //initialize the TextView that displays the time left for a question to be answered
     public TextView txt_timer;
     //array list that stores the options available for each question
@@ -60,27 +62,12 @@ public class MultiPlayerQuiz extends AppCompatActivity {
     private ImageButton b2p2;
     private ImageButton b3p2;
     private ImageButton b4p2;
-    /* The following Strings represent the names of the flags displayed
-   (eg: flagNameForBtn1 = "france" is used to display France's flag
-   on button 1 from both player 1 & player 2)*/
-    private String flagNameForBtn1;
-    private String flagNameForBtn2;
-    private String flagNameForBtn3;
-    private String flagNameForBtn4;
-    // declaring the resources for the above mentioned buttons
-    private int resB1;
-    private int resB2;
-    private int resB3;
-    private int resB4;
     private Resources res;
     private String packageName;
     //set the CountDownTimer (both parameters are in milliseconds)
     private CountDownTimer timer;
-    private RandomNumberGenerator generator = RandomNumberGenerator.getInstance();
     private AlphaAnimation alphaAnimation;
     private AnimationSet scaleAnimationSet;
-    private ScaleAnimation scaleUpAnimation;
-    private ScaleAnimation scaleDownAnimation;
     //check if players did answer the current question
     private boolean didPlayer1AnswerCorrectly;
     private boolean didPlayer2AnswerCorrectly;
@@ -100,24 +87,9 @@ public class MultiPlayerQuiz extends AppCompatActivity {
         return player1Score;
     }
 
-    //setter for Player 1's score
-    public static void setPlayer1Score(int newScore) {
-        player1Score = newScore;
-    }
-
     //getter for Player 2's score
     public static int getPlayer2Score() {
         return player2Score;
-    }
-
-    //setter for Player 2's score
-    public static void setPlayer2Score(int newScore) {
-        player2Score = newScore;
-    }
-
-    //getter for the flag indexes
-    public ArrayList<Integer> getFlags(){
-        return flags;
     }
 
     @Override
@@ -133,9 +105,9 @@ public class MultiPlayerQuiz extends AppCompatActivity {
         alphaAnimation.setDuration(BTN_ANIMATION_DURATION_IN_MILLIS);
 
         //initialize animation for scores
-        scaleUpAnimation = new ScaleAnimation(/*fromX*/ 1, /*toX*/ SCALE_AMOUNT, /*fromY*/ 1, /*toY*/ SCALE_AMOUNT,
+        ScaleAnimation scaleUpAnimation = new ScaleAnimation(/*fromX*/ 1, /*toX*/ SCALE_AMOUNT, /*fromY*/ 1, /*toY*/ SCALE_AMOUNT,
                 Animation.RELATIVE_TO_SELF, /*pivotX*/ 0.5f, Animation.RELATIVE_TO_SELF, /*pivotY*/ 0.5f);
-        scaleDownAnimation = new ScaleAnimation(/*fromX*/ SCALE_AMOUNT, /*toX*/ 1, /*fromY*/ SCALE_AMOUNT, /*toY*/ 1,
+        ScaleAnimation scaleDownAnimation = new ScaleAnimation(/*fromX*/ SCALE_AMOUNT, /*toX*/ 1, /*fromY*/ SCALE_AMOUNT, /*toY*/ 1,
                 Animation.RELATIVE_TO_SELF, /*pivotX*/ 0.5f, Animation.RELATIVE_TO_SELF, /*pivotY*/ 0.5f);
         scaleUpAnimation.setStartOffset(0);
         scaleUpAnimation.setDuration(SCORE_ANIMATION_DURATION_IN_MILLIS);
@@ -237,16 +209,16 @@ public class MultiPlayerQuiz extends AppCompatActivity {
 
         /* Since we have the IDs of the flags,
         we get from the database the names of the png files corresponding to those indexes.*/
-        flagNameForBtn1 = QuestionDatabase.FLAGS[flags.get(0)];
-        flagNameForBtn2 = QuestionDatabase.FLAGS[flags.get(1)];
-        flagNameForBtn3 = QuestionDatabase.FLAGS[flags.get(2)];
-        flagNameForBtn4 = QuestionDatabase.FLAGS[flags.get(3)];
+        String flagNameForBtn1 = QuestionDatabase.FLAGS[flags.get(0)];
+        String flagNameForBtn2 = QuestionDatabase.FLAGS[flags.get(1)];
+        String flagNameForBtn3 = QuestionDatabase.FLAGS[flags.get(2)];
+        String flagNameForBtn4 = QuestionDatabase.FLAGS[flags.get(3)];
 
         //set the values for the resources
-        resB1 = res.getIdentifier(flagNameForBtn1, "drawable", packageName);
-        resB2 = res.getIdentifier(flagNameForBtn2, "drawable", packageName);
-        resB3 = res.getIdentifier(flagNameForBtn3, "drawable", packageName);
-        resB4 = res.getIdentifier(flagNameForBtn4, "drawable", packageName);
+        int resB1 = res.getIdentifier(flagNameForBtn1, "drawable", packageName);
+        int resB2 = res.getIdentifier(flagNameForBtn2, "drawable", packageName);
+        int resB3 = res.getIdentifier(flagNameForBtn3, "drawable", packageName);
+        int resB4 = res.getIdentifier(flagNameForBtn4, "drawable", packageName);
 
         //draw the images of the flags on the buttons
         b1p1.setImageResource(resB1);

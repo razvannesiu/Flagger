@@ -11,9 +11,12 @@ import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 
+@SuppressWarnings({"ALL", "UnusedAssignment"})
 public class Settings extends AppCompatActivity {
 
     public static final String FILE_NAME = "Settings.txt";
+    private final int MIN_SECONDS = 3;
+    private final int MIN_QUESTIONS = 3;
     private SeekBar singlePlayerQuestionsBar;
     private SeekBar multiPlayerQuestionsBar;
     private SeekBar singlePlayerSecondsBar;
@@ -22,14 +25,11 @@ public class Settings extends AppCompatActivity {
     private TextView tvSinglePlayerNrSeconds;
     private TextView tvMultiPlayerNrQuestions;
     private TextView tvMultiPlayerNrSeconds;
-    private int MIN_SECONDS = 3;
-    private int MIN_QUESTIONS = 3;
-    private File settingsFile;
 
     /**
      * Gets the preferences that are currently stored in the settings file.
      */
-    public static void loadPreferencesFromFile(Context ctx){
+    public static void loadPreferencesFromFile(Context ctx) {
         FileInputStream fileInputStream;
 
         try {
@@ -37,7 +37,7 @@ public class Settings extends AppCompatActivity {
             int character;
             String preferences = "";
 
-            while((character = fileInputStream.read()) != -1){
+            while ((character = fileInputStream.read()) != -1) {
                 preferences += (char) character;
             }
 
@@ -63,8 +63,8 @@ public class Settings extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_settings);
 
-        //get file
-        settingsFile = new File(getFilesDir(), FILE_NAME);
+        // get file
+        File settingsFile = new File(getFilesDir(), FILE_NAME);
 
         //find seekBar's from XML
         singlePlayerQuestionsBar = (SeekBar) findViewById(R.id.sbNrQuestionsSingle);
@@ -89,8 +89,7 @@ public class Settings extends AppCompatActivity {
                     SinglePlayerQuiz.QUESTIONS_PER_MATCH = progress;
                     tvSinglePlayerNrQuestions.setText(String.valueOf(SinglePlayerQuiz.QUESTIONS_PER_MATCH));
                     writeNewPreferencesToFile();
-                }
-                else{
+                } else {
                     seekBar.setProgress(MIN_QUESTIONS);
                 }
             }
@@ -113,8 +112,7 @@ public class Settings extends AppCompatActivity {
                     SinglePlayerQuiz.SECONDS_PER_QUESTION = progress;
                     tvSinglePlayerNrSeconds.setText(String.valueOf(SinglePlayerQuiz.SECONDS_PER_QUESTION));
                     writeNewPreferencesToFile();
-                }
-                else{
+                } else {
                     seekBar.setProgress(MIN_SECONDS);
                 }
             }
@@ -137,8 +135,7 @@ public class Settings extends AppCompatActivity {
                     MultiPlayerQuiz.QUESTIONS_PER_MATCH = progress;
                     tvMultiPlayerNrQuestions.setText(String.valueOf(MultiPlayerQuiz.QUESTIONS_PER_MATCH));
                     writeNewPreferencesToFile();
-                }
-                else{
+                } else {
                     seekBar.setProgress(MIN_QUESTIONS);
                 }
             }
@@ -161,8 +158,7 @@ public class Settings extends AppCompatActivity {
                     MultiPlayerQuiz.SECONDS_PER_QUESTION = progress;
                     tvMultiPlayerNrSeconds.setText(String.valueOf(MultiPlayerQuiz.SECONDS_PER_QUESTION));
                     writeNewPreferencesToFile();
-                }
-                else{
+                } else {
                     seekBar.setProgress(MIN_SECONDS);
                 }
             }
@@ -183,10 +179,11 @@ public class Settings extends AppCompatActivity {
      * Write the new values of {@code SinglePlayerQuiz.QUESTIONS_PER_MATCH},
      * {@code SinglePlayerQuiz.SECONDS_PER_QUESTION}, {@code MultiPlayerQuiz.QUESTIONS_PER_MATCH},
      * {@code MultiPlayerQuiz.SECONDS_PER_QUESTION} to the settings file.
+     *
      * @see SinglePlayerQuiz
      * @see MultiPlayerQuiz
      */
-    private void writeNewPreferencesToFile(){
+    private void writeNewPreferencesToFile() {
         String preferences = SinglePlayerQuiz.QUESTIONS_PER_MATCH + " " +
                 SinglePlayerQuiz.SECONDS_PER_QUESTION + " " +
                 MultiPlayerQuiz.QUESTIONS_PER_MATCH + " " +
@@ -207,10 +204,11 @@ public class Settings extends AppCompatActivity {
      * Update values of SeekBar's and TextView's to new values of {@code SinglePlayerQuiz.QUESTIONS_PER_MATCH},
      * {@code SinglePlayerQuiz.SECONDS_PER_QUESTION}, {@code MultiPlayerQuiz.QUESTIONS_PER_MATCH},
      * {@code MultiPlayerQuiz.SECONDS_PER_QUESTION}.
+     *
      * @see SinglePlayerQuiz
      * @see MultiPlayerQuiz
      */
-    private void updatePreferencesOnScreen(){
+    private void updatePreferencesOnScreen() {
         //set seekBar's to new values
         singlePlayerQuestionsBar.setProgress(SinglePlayerQuiz.QUESTIONS_PER_MATCH);
         singlePlayerSecondsBar.setProgress(SinglePlayerQuiz.SECONDS_PER_QUESTION);

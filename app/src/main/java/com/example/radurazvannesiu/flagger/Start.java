@@ -23,7 +23,7 @@ public class Start extends AppCompatActivity {
         setContentView(R.layout.activity_start);
 
         //apply new font for title
-        Typeface oleoScript = Typeface.createFromAsset(getAssets(), "/Fonts/OleoScript-Bold.ttf");
+        Typeface oleoScript = Typeface.createFromAsset(getAssets(), "Fonts/OleoScript-Bold.ttf");
         TextView tvTitle = (TextView) findViewById(R.id.txtFlagger);
         tvTitle.setTypeface(oleoScript);
     }

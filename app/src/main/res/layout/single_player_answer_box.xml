@@ -1,10 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="550dp" android:layout_height="match_parent"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
     android:background="@color/screen"
     android:orientation="vertical"
-    >
+    android:padding="@dimen/generalPadding">
+
+
+
 
     <TextView
         android:id="@+id/tvTitle"
@@ -22,6 +26,10 @@
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/dialogBoxMargin"
         android:background="@android:color/transparent"
+        android:paddingEnd="@dimen/boxLengthPadding"
+        android:paddingLeft="@dimen/boxLengthPadding"
+        android:paddingRight="@dimen/boxLengthPadding"
+        android:paddingStart="@dimen/boxLengthPadding"
         tools:ignore="ContentDescription" />
 
     <Button
@@ -30,6 +38,7 @@
         android:layout_height="wrap_content"
         android:layout_margin="@dimen/dialogBoxMargin"
         android:background="@color/colorPrimary"
+        android:padding="@dimen/generalPadding"
         android:text="Button"
         android:textColor="@color/screen"
         android:textSize="@dimen/btnDialogBox" />

@@ -8,6 +8,10 @@ import android.os.CountDownTimer;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.view.animation.AlphaAnimation;
+import android.view.animation.Animation;
+import android.view.animation.AnimationSet;
+import android.view.animation.DecelerateInterpolator;
+import android.view.animation.ScaleAnimation;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
@@ -26,6 +30,10 @@ public class MultiPlayerQuiz extends AppCompatActivity {
     public static final int TIMER_RED_THRESHOLD_IN_MILLIS = 3000;
     //duration for button clicked animation
     public static final int BTN_ANIMATION_DURATION_IN_MILLIS = 600;
+    //duration for score increased animation
+    public static final int SCORE_ANIMATION_DURATION_IN_MILLIS = 500;
+    //the amount by which the score will be scaled
+    public static final float SCALE_AMOUNT = 1.25f;
     //subject to change according to settings
     public static int SECONDS_PER_QUESTION = 10;
     public static int QUESTIONS_PER_MATCH = 5;
@@ -70,6 +78,9 @@ public class MultiPlayerQuiz extends AppCompatActivity {
     private CountDownTimer timer;
     private RandomNumberGenerator generator = RandomNumberGenerator.getInstance();
     private AlphaAnimation alphaAnimation;
+    private AnimationSet scaleAnimationSet;
+    private ScaleAnimation scaleUpAnimation;
+    private ScaleAnimation scaleDownAnimation;
     //check if players did answer the current question
     private boolean didPlayer1AnswerCorrectly;
     private boolean didPlayer2AnswerCorrectly;
@@ -117,9 +128,23 @@ public class MultiPlayerQuiz extends AppCompatActivity {
         //load the new preferences from the settings file
         Settings.loadPreferencesFromFile(this);
 
-        //initialize animation (goes to 25% transparency)
+        //initialize animation for flags (goes to 25% transparency)
         alphaAnimation = new AlphaAnimation(1, 0.25f);
         alphaAnimation.setDuration(BTN_ANIMATION_DURATION_IN_MILLIS);
+
+        //initialize animation for scores
+        scaleUpAnimation = new ScaleAnimation(/*fromX*/ 1, /*toX*/ SCALE_AMOUNT, /*fromY*/ 1, /*toY*/ SCALE_AMOUNT,
+                Animation.RELATIVE_TO_SELF, /*pivotX*/ 0.5f, Animation.RELATIVE_TO_SELF, /*pivotY*/ 0.5f);
+        scaleDownAnimation = new ScaleAnimation(/*fromX*/ SCALE_AMOUNT, /*toX*/ 1, /*fromY*/ SCALE_AMOUNT, /*toY*/ 1,
+                Animation.RELATIVE_TO_SELF, /*pivotX*/ 0.5f, Animation.RELATIVE_TO_SELF, /*pivotY*/ 0.5f);
+        scaleUpAnimation.setStartOffset(0);
+        scaleUpAnimation.setDuration(SCORE_ANIMATION_DURATION_IN_MILLIS);
+        scaleDownAnimation.setStartOffset(SCORE_ANIMATION_DURATION_IN_MILLIS);
+        scaleDownAnimation.setDuration(SCORE_ANIMATION_DURATION_IN_MILLIS);
+        scaleAnimationSet = new AnimationSet(true);
+        scaleAnimationSet.setInterpolator(new DecelerateInterpolator());
+        scaleAnimationSet.addAnimation(scaleUpAnimation);
+        scaleAnimationSet.addAnimation(scaleDownAnimation);
 
         //set question number & scores at beginning
         questionNumber = 1;
@@ -244,9 +269,11 @@ public class MultiPlayerQuiz extends AppCompatActivity {
         */
         if(didPlayer1AnswerCorrectly){
             player1Score += 1;
+            scoreP1.startAnimation(scaleAnimationSet);
         }
         if(didPlayer2AnswerCorrectly){
             player2Score += 1;
+            scoreP2.startAnimation(scaleAnimationSet);
         }
 
         //display the score

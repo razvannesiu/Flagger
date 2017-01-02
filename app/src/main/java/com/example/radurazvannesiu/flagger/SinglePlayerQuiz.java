@@ -119,7 +119,26 @@ public class SinglePlayerQuiz extends AppCompatActivity {
         question = (TextView) findViewById(R.id.question);
         scoreBar = (SeekBar) findViewById(R.id.scoreBar);
         scoreBar.setMax(SinglePlayerQuiz.QUESTIONS_PER_MATCH);
-        scoreBar.setProgress(0);
+
+        scoreBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+                //user cannot change the progress of the bar (by clicking the SeekBar)
+                if(fromUser){
+                    seekBar.setProgress(score);
+                }
+            }
+
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {
+                //ignore
+            }
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {
+                //ignore
+            }
+        });
 
         /*The ImageButton objects for all the buttons that represent
         the options available for each question.
@@ -292,9 +311,7 @@ public class SinglePlayerQuiz extends AppCompatActivity {
         for(String name: names){
             nameToDisplay += name.toUpperCase().charAt(0) + name.substring(1) + " ";
         }
-        //TODO rename flags like bosniaherzegovina both in db and in drawable
 
-        //TODO add multi player box (optional- non scalllable size)
         return nameToDisplay;
     }
 

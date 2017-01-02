@@ -443,10 +443,10 @@ public class QuestionDatabase {
         FLAGS[16] = "bangladesh";
         FLAGS[17] = "belarus";
         FLAGS[18] = "belgium";
-        FLAGS[19] = "bosniaherzegovina";
+        FLAGS[19] = "bosnia_and_herzegovina";
         FLAGS[20] = "brunei";
         FLAGS[21] = "bhutan";
-        FLAGS[22] = "southkorea";
+        FLAGS[22] = "south_korea";
         FLAGS[23] = "china";
         FLAGS[24] = "india";
         FLAGS[25] = "vietnam";
@@ -454,15 +454,15 @@ public class QuestionDatabase {
         FLAGS[27] = "cambodia";
         FLAGS[28] = "croatia";
         FLAGS[29] = "cyprus";
-        FLAGS[30] = "czechrepublic";
+        FLAGS[30] = "czech_republic";
         FLAGS[31] = "denmark";
-        FLAGS[32] = "easttimor";
+        FLAGS[32] = "east_timor";
         FLAGS[33] = "estonia";
         FLAGS[34] = "finland";
         FLAGS[35] = "france";
         FLAGS[36] = "georgia";
         FLAGS[37] = "germany";
-        FLAGS[38] = "hongkong";
+        FLAGS[38] = "hong_kong";
         FLAGS[39] = "iceland";
         FLAGS[40] = "iran";
         FLAGS[41] = "iraq";
@@ -490,7 +490,7 @@ public class QuestionDatabase {
         FLAGS[63] = "myanmar";
         FLAGS[64] = "nepal";
         FLAGS[65] = "netherlands";
-        FLAGS[66] = "northkorea";
+        FLAGS[66] = "north_korea";
         FLAGS[67] = "norway";
         FLAGS[68] = "oman";
         FLAGS[69] = "pakistan";
@@ -498,14 +498,14 @@ public class QuestionDatabase {
         FLAGS[71] = "philippines";
         FLAGS[72] = "portugal";
         FLAGS[73] = "qatar";
-        FLAGS[74] = "sanmarino";
-        FLAGS[75] = "saudiarabia";
+        FLAGS[74] = "san_marino";
+        FLAGS[75] = "saudi_arabia";
         FLAGS[76] = "serbia";
         FLAGS[77] = "yemen";
         FLAGS[78] = "slovakia";
         FLAGS[79] = "slovenia";
         FLAGS[80] = "spain";
-        FLAGS[81] = "srilanka";
+        FLAGS[81] = "sri_lanka";
         FLAGS[82] = "sweden";
         FLAGS[83] = "switzerland";
         FLAGS[84] = "syria";
@@ -514,10 +514,10 @@ public class QuestionDatabase {
         FLAGS[87] = "thailand";
         FLAGS[88] = "turkey";
         FLAGS[89] = "turkmenistan";
-        FLAGS[90] = "uae";
-        FLAGS[91] = "unitedkingdom";
+        FLAGS[90] = "united_arab_emirates";
+        FLAGS[91] = "united_kingdom";
         FLAGS[92] = "uzbekistan";
-        FLAGS[93] = "vaticancity";
+        FLAGS[93] = "vatican_city";
 
     }
 

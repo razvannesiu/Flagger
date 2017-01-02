@@ -8,6 +8,7 @@
     <string name="textQuestionsPerGame">Questions / Game</string>
     <string name="textSecondsPerQuestions">Seconds / Question</string>
     <string name="textGameOver">Game over</string>
-    <string name="dialogButton">Got it!</string>
+    <string name="dialogButtonCorrect">Got it!</string>
+    <string name="dialogButtonWrong">Next time I'll know it!</string>
     <string name="dialogTitle">Correct Answer</string>
 </resources>

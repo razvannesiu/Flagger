@@ -38,7 +38,7 @@
         android:layout_toLeftOf="@+id/textRematch"
         android:layout_toStartOf="@+id/textRematch"
         android:onClick="backToMenuHandler"
-        android:src="@drawable/single"
+        android:src="@drawable/back_to_menu"
         tools:ignore="ContentDescription" />
 
     <TextView

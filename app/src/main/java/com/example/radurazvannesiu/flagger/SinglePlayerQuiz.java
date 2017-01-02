@@ -268,10 +268,15 @@ public class SinglePlayerQuiz extends AppCompatActivity {
             }
         });
 
+        int idOfTextOnButton = didPlayerAnswerCorrectly? R.string.dialogButtonCorrect : R.string.dialogButtonWrong;
+        btnNextQuestion.setText(res.getText(idOfTextOnButton));
+
+        //set color and text for the country with correct flag
         TextView tvTitle = (TextView) dialog.findViewById(R.id.tvTitle);
-        int color = didPlayerAnswerCorrectly? R.color.colorCorrect : R.color.colorWrong;
-        tvTitle.setTextColor(res.getColor(color));
+        int idOfColor = didPlayerAnswerCorrectly? R.color.colorCorrect : R.color.colorWrong;
+        tvTitle.setTextColor(res.getColor(idOfColor));
         tvTitle.setText(getFormattedFlagName(nameOfCorrectFlag));
+
         dialog.setTitle(R.string.dialogTitle);
         dialog.show();
     }
@@ -288,7 +293,7 @@ public class SinglePlayerQuiz extends AppCompatActivity {
             nameToDisplay += name.toUpperCase().charAt(0) + name.substring(1) + " ";
         }
         //TODO rename flags like bosniaherzegovina both in db and in drawable
-        //TODO add new icon for back to main menu
+
         //TODO add multi player box (optional- non scalllable size)
         return nameToDisplay;
     }

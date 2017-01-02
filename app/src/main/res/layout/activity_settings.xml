@@ -4,8 +4,8 @@
     android:id="@+id/activity_settings"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingLeft="@dimen/dialogBoxMargin"
-    android:paddingRight="@dimen/dialogBoxMargin"
+    android:paddingLeft="@dimen/settingsPadding"
+    android:paddingRight="@dimen/settingsPadding"
     tools:context="com.example.radurazvannesiu.flagger.Settings">
 
     <TextView

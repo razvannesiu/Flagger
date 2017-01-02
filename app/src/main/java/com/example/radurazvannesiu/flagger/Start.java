@@ -1,9 +1,11 @@
 package com.example.radurazvannesiu.flagger;
 
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.widget.TextView;
 
 /**
  * Main activity & launcher class that displays the Start Menu & handles its events.
@@ -19,6 +21,11 @@ public class Start extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_start);
+
+        //apply new font for title
+        Typeface oleoScript = Typeface.createFromAsset(getAssets(), "/Fonts/OleoScript-Bold.ttf");
+        TextView tvTitle = (TextView) findViewById(R.id.txtFlagger);
+        tvTitle.setTypeface(oleoScript);
     }
 
     /**

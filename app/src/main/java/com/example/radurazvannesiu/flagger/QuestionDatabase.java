@@ -187,7 +187,7 @@ public class QuestionDatabase {
         QUESTIONS[51] = "What is the flag of Lithuania?";
         QUESTION_ANSWER_MAP[51] = 53;
 
-        QUESTIONS[52] = "What is the flag of Luxemburg?";
+        QUESTIONS[52] = "What is the flag of Luxembourg?";
         QUESTION_ANSWER_MAP[52] = 54;
 
         QUESTIONS[53] = "What is the flag of Macau?";
@@ -214,7 +214,7 @@ public class QuestionDatabase {
         QUESTIONS[60] = "What is the flag of Montenegro?";
         QUESTION_ANSWER_MAP[60] = 62;
 
-        QUESTIONS[61] = "What is the flag of Myanmar?";
+        QUESTIONS[61] = "What was the flag of the Union of Burma?";
         QUESTION_ANSWER_MAP[61] = 63;
 
         QUESTIONS[62] = "What is the flag of Nepal?";
@@ -479,7 +479,7 @@ public class QuestionDatabase {
         FLAGS[51] = "lebanon";
         FLAGS[52] = "lichtenstein";
         FLAGS[53] = "lithuania";
-        FLAGS[54] = "luxemburg";
+        FLAGS[54] = "luxembourg";
         FLAGS[55] = "macau";
         FLAGS[56] = "macedonia";
         FLAGS[57] = "malaysia";
@@ -488,7 +488,7 @@ public class QuestionDatabase {
         FLAGS[60] = "moldova";
         FLAGS[61] = "mongolia";
         FLAGS[62] = "montenegro";
-        FLAGS[63] = "myanmar";
+        FLAGS[63] = "union_of_burma";
         FLAGS[64] = "nepal";
         FLAGS[65] = "netherlands";
         FLAGS[66] = "north_korea";

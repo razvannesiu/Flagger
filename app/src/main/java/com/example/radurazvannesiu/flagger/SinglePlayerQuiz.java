@@ -66,6 +66,27 @@ public class SinglePlayerQuiz extends AppCompatActivity {
         return score;
     }
 
+    /**
+     * Formats a flag name so that it can be displayed to the user.
+     * @param flagName The flag name, which contains underscores, and it's all in lowercase.
+     * @return The nicely formatted name of the flag.
+     */
+    public static String getFormattedFlagName(String flagName){
+        String nameToDisplay = "";
+        String[] names = flagName.split("_");
+        for(String name: names){
+            if(name.equals("of") || name.equals("and")) {
+                nameToDisplay += name + " ";
+            }
+            else{
+                nameToDisplay += name.toUpperCase().charAt(0) + name.substring(1) + " ";
+            }
+        }
+
+        //drop the empty space left at the end
+        return nameToDisplay.trim();
+    }
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -277,21 +298,6 @@ public class SinglePlayerQuiz extends AppCompatActivity {
 
         dialog.setTitle(R.string.dialogTitle);
         dialog.show();
-    }
-
-    /**
-     * Formats a flag name so that it can be displayed to the user.
-     * @param flagName The flag name, which contains underscores, and it's all in lowercase.
-     * @return The nicely formatted name of the flag.
-     */
-    private String getFormattedFlagName(String flagName){
-        String nameToDisplay = "";
-        String[] names = flagName.split("_");
-        for(String name: names){
-            nameToDisplay += name.toUpperCase().charAt(0) + name.substring(1) + " ";
-        }
-
-        return nameToDisplay;
     }
 
 }

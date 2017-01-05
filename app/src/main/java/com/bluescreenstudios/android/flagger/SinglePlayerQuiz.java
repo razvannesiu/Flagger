@@ -142,7 +142,7 @@ public class SinglePlayerQuiz extends AppCompatActivity {
 
         /*The ImageButton objects for all the buttons that represent
         the options available for each question.
-        Naming convention: sb0 is the first button in a single player game.
+        Naming convention: sib0 is the first button in a single player game.
         (buttons are displayed from left to right, from 0 to 3)*/
         sib0 = (ImageButton) findViewById(R.id.sib0);
         sib1 = (ImageButton) findViewById(R.id.sib1);
@@ -155,9 +155,9 @@ public class SinglePlayerQuiz extends AppCompatActivity {
             Point p = new Point();
             display.getSize(p);
             //there are 4 buttons + 3 gaps in between, so in total 7 blocks
-            //divide by 2 to get left padding for leftmost button
-            int offsetForLeftmostButton = (p.x - res.getDimensionPixelSize(R.dimen.flagMarginSingleplayer) * 7) / 2;
-            sib0.setPadding(offsetForLeftmostButton, sib0.getPaddingTop(), sib0.getPaddingRight(), sib0.getPaddingBottom());
+            //divide by 2 to get x coordinate for leftmost button
+            int xCoordinateForLeftmostButton = (p.x - res.getDimensionPixelSize(R.dimen.flagMarginSingleplayer) * 7) / 2;
+            sib0.setX(xCoordinateForLeftmostButton);
         }
 
         //setup timer (we need 1 extra sec to cope with the initial delay)

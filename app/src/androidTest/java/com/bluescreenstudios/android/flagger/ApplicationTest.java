@@ -1,4 +1,4 @@
-package com.example.radurazvannesiu.flagger;
+package com.bluescreenstudios.android.flagger;
 
 import android.app.Application;
 import android.test.ApplicationTestCase;

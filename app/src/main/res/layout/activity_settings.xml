@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:paddingLeft="@dimen/generalPadding"
     android:paddingRight="@dimen/generalPadding"
-    tools:context="com.example.radurazvannesiu.flagger.Settings">
+    tools:context="com.bluescreenstudios.android.flagger.Settings">
 
     <TextView
         android:id="@+id/txtTitle"

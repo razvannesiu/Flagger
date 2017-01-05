@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.radurazvannesiu.flagger">
+    package="com.bluescreenstudios.android.flagger">
 
     <application
         android:allowBackup="true"
@@ -10,23 +10,23 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".MultiPlayerQuiz"
+            android:name="com.bluescreenstudios.android.com.bluescreenstudios.android.flagger.MultiPlayerQuiz"
             android:noHistory="true"
             android:screenOrientation="landscape" />
         <activity
-            android:name=".SinglePlayerQuiz"
+            android:name="com.bluescreenstudios.android.com.bluescreenstudios.android.flagger.SinglePlayerQuiz"
             android:noHistory="true"
             android:screenOrientation="landscape" />
         <activity
-            android:name=".End"
+            android:name="com.bluescreenstudios.android.com.bluescreenstudios.android.flagger.End"
             android:noHistory="true"
             android:screenOrientation="landscape" />
         <activity
-            android:name=".Settings"
+            android:name="com.bluescreenstudios.android.com.bluescreenstudios.android.flagger.Settings"
             android:noHistory="true"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".Start"
+            android:name="com.bluescreenstudios.android.com.bluescreenstudios.android.flagger.Start"
             android:screenOrientation="landscape">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

@@ -4,12 +4,9 @@ import android.app.Dialog;
 import android.content.Intent;
 import android.content.res.Resources;
 import android.graphics.Color;
-import android.graphics.Point;
-import android.os.Build;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.support.v7.app.AppCompatActivity;
-import android.view.Display;
 import android.view.View;
 import android.view.animation.AlphaAnimation;
 import android.widget.Button;
@@ -148,17 +145,6 @@ public class SinglePlayerQuiz extends AppCompatActivity {
         sib1 = (ImageButton) findViewById(R.id.sib1);
         sib2 = (ImageButton) findViewById(R.id.sib2);
         sib3 = (ImageButton) findViewById(R.id.sib3);
-
-        //get screen dimensions, and set the left padding for leftmost button
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.HONEYCOMB_MR2) {
-            Display display = getWindowManager().getDefaultDisplay();
-            Point p = new Point();
-            display.getSize(p);
-            //there are 4 buttons + 3 gaps in between, so in total 7 blocks
-            //divide by 2 to get x coordinate for leftmost button
-            int xCoordinateForLeftmostButton = (p.x - res.getDimensionPixelSize(R.dimen.flagMarginSingleplayer) * 7) / 2;
-            sib0.setX(xCoordinateForLeftmostButton);
-        }
 
         //setup timer (we need 1 extra sec to cope with the initial delay)
         timer = new CountDownTimer((SinglePlayerQuiz.SECONDS_PER_QUESTION + 1) * MultiPlayerQuiz.MILLIS_IN_A_SECOND,

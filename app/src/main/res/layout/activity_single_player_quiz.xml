@@ -47,19 +47,23 @@
         android:clickable="false"
         android:thumb="@android:drawable/ic_menu_myplaces" />
 
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/question"
+        android:layout_centerInParent="true"
+        android:layout_marginBottom="8dp"
+        android:layout_marginTop="@dimen/marginTopSingleplayer"
+        android:gravity="center">
+
     <ImageButton
         android:id="@+id/sib0"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_below="@+id/question"
-        android:layout_centerHorizontal="true"
         android:layout_marginEnd="@dimen/flagMarginSingleplayer"
-        android:layout_marginLeft="@dimen/initialMargin"
         android:layout_marginRight="@dimen/flagMarginSingleplayer"
-        android:layout_marginStart="@dimen/initialMargin"
-        android:layout_marginTop="@dimen/marginTopSingleplayer"
         android:background="@android:color/transparent"
         android:onClick="playerChoseAnswer"
         android:tag="0"
@@ -69,10 +73,8 @@
         android:id="@+id/sib1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/question"
         android:layout_marginEnd="@dimen/flagMarginSingleplayer"
         android:layout_marginRight="@dimen/flagMarginSingleplayer"
-        android:layout_marginTop="@dimen/marginTopSingleplayer"
         android:layout_toEndOf="@+id/sib0"
         android:layout_toRightOf="@+id/sib0"
         android:background="@android:color/transparent"
@@ -84,10 +86,8 @@
         android:id="@+id/sib2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/question"
         android:layout_marginEnd="@dimen/flagMarginSingleplayer"
         android:layout_marginRight="@dimen/flagMarginSingleplayer"
-        android:layout_marginTop="@dimen/marginTopSingleplayer"
         android:layout_toEndOf="@+id/sib1"
         android:layout_toRightOf="@+id/sib1"
         android:background="@android:color/transparent"
@@ -99,14 +99,12 @@
         android:id="@+id/sib3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/question"
-        android:layout_marginEnd="@dimen/flagMarginSingleplayer"
-        android:layout_marginRight="@dimen/flagMarginSingleplayer"
-        android:layout_marginTop="@dimen/marginTopSingleplayer"
         android:layout_toEndOf="@+id/sib2"
         android:layout_toRightOf="@+id/sib2"
         android:background="@android:color/transparent"
         android:onClick="playerChoseAnswer"
         android:tag="3"
         tools:ignore="ContentDescription" />
+
+    </RelativeLayout>
 </RelativeLayout>

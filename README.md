@@ -1,4 +1,4 @@
-## Flagger (*Android app*)
+## [Flagger](https://play.google.com/store/apps/details?id=com.bluescreenstudios.android.flagger&hl=en) (*Android app*)
 
 ###Description
 Flagger is an entertaining and educational quiz game about the flags of various countries. It has a Single Player mode that allows players to practice guessing the flags, but it also has a single-device Offline Multiplayer mode, which encourages the 2 players to share stories about their background while learning the flags of virtually all the countries worldwide. In the Settings panel, players can choose how many questions to be displayed in a match, and they can also choose the pace of the game, meaning that they can choose how many seconds are allocated for each question.
@@ -9,8 +9,8 @@ Flagger is an entertaining and educational quiz game about the flags of various 
 
 ###Features implemented:
 - [x] Random occurence of questions & answer choices.
-- [x] Make texts scalable by using **dp** instead of **sp**.
-- [ ] Make images scalable.
+- [x] Make texts scalable (by using **dp** instead of **sp**).
+- [ ] Make images scalable (depending on the screen size).
 - [x] Display images dynamically from the resources folder.
   - [ ] Display images dynamically from the asset folder. (*__optimization__*)
 - [x] Create a Java Class as database.
@@ -26,9 +26,12 @@ Flagger is an entertaining and educational quiz game about the flags of various 
 - Implement single player mode:
   - [x] Display item in Start Menu.
   - [x] Implement single player action (screen).
+  - [x] Added dialog box that displays the correct answer (and informs the player if an answer is correct or not).
   - [x] Update rematch button, so that it works for single player mode.
+  - [x] Updated timer so that last 3 seconds of a question are displayed in red (works for multiplayer as well).
 - Implement a single-device multiplayer player mode:
   - [x] Display item in Start Menu.
+  - [x] Added scale animation (with an interpolator) to show when score gets updated.
   - [x] Implement multiplayer action (screen).
   - [ ] Randomly permute the answer choices for second player.
 - Implement a "Find flag" tool:
@@ -38,8 +41,6 @@ Flagger is an entertaining and educational quiz game about the flags of various 
 - Implement Settings tool:
   - [x] Display item in Start Menu.
 - Change difficulty feature:
-    - [ ] Create drop-down list.
-    - [ ] Implement functionality. (on click handlers)
     - [ ] Easy: 15 seconds per question; questions related to well-known countries.
     - [ ] Normal: 10 seconds per question; all questions.
     - [ ] Hard: 5 seconds per question; exclude the questions used in Easy mode.
@@ -49,7 +50,7 @@ Flagger is an entertaining and educational quiz game about the flags of various 
     - [x] Implement functionality. (action taken when user selects a number)
   - Choose continents feature:
     - [ ] Create list with checkable text views (with the names of the continents - except Antarctica) 
-    - [ ] Implement functionality. (questions regarding countries from the checked continent are enabled)
+    - [ ] Implement functionality. (questions regarding countries from the checked continent should be the only ones enabled)
 
 ###Screenshots
 ![Game Over](/Screenshots/samsung_s3_game_over.png)
